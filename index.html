@@ -322,39 +322,33 @@
       </section>
     </main>
     <script>
-      // Navigation bar hide/show on scroll
+      // Navigation bar hide/show on scroll (guard against missing nav element)
       let lastScroll = 0;
       const nav = document.querySelector('nav');
 
-      window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          const currentScroll = window.pageYOffset;
 
-        if (currentScroll <= 0) {
-          nav.classList.remove('hide');
-          return;
-        }
+          if (currentScroll <= 0) {
+            nav.classList.remove('hide');
+            lastScroll = 0;
+            return;
+          }
 
-        if (currentScroll > lastScroll && !nav.classList.contains('hide')) {
-          // Scrolling down
-          nav.classList.add('hide');
-        } else if (currentScroll < lastScroll && nav.classList.contains('hide')) {
-          // Scrolling up
-          nav.classList.remove('hide');
-        }
+          if (currentScroll > lastScroll && !nav.classList.contains('hide')) {
+            // Scrolling down
+            nav.classList.add('hide');
+          } else if (currentScroll < lastScroll && nav.classList.contains('hide')) {
+            // Scrolling up
+            nav.classList.remove('hide');
+          }
 
-        lastScroll = currentScroll;
-      });
+          lastScroll = currentScroll;
+        });
+      }
 
-      // Hamburger toggle
-      const navToggle = document.querySelector('.nav-toggle');
-      navToggle && navToggle.addEventListener('click', () => {
-        document.body.classList.toggle('nav-open');
-      });
-
-      // Close menu when a link is clicked
-      document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
-        document.body.classList.remove('nav-open');
-      }));
+      // Note: mobile hamburger behavior and link wiring are handled in assets/nav.js
     </script>
   </body>
 </html>

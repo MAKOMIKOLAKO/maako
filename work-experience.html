@@ -23,6 +23,7 @@
         --text: #EBEAE4;
         --muted: rgba(235,234,228,0.8);
         --logo-size: 64px;
+        --nav-height: 60px;
       }
 
       * { box-sizing: border-box; margin:0; padding:0; }
@@ -51,12 +52,12 @@
         margin: 0 auto;
         position: relative;
         display: grid;
-        grid-template-columns: auto 1fr;
+        grid-template-columns: auto 1fr auto;
         align-items: center;
         gap: 1rem;
       }
 
-      .nav-toggle{display:none;background:transparent;border:0;width:40px;height:40px;padding:6px;cursor:pointer}
+      .nav-toggle{display:none;background:transparent;border:0;width:40px;height:40px;padding:6px;cursor:pointer;align-self:center;z-index:1002}
       .nav-toggle .bar{display:block;width:100%;height:2px;background:var(--text);position:relative}
       .nav-toggle .bar::before,.nav-toggle .bar::after{content:'';position:absolute;left:0;width:100%;height:2px;background:var(--text)}
       .nav-toggle .bar::before{top:-8px}.nav-toggle .bar::after{top:8px}
@@ -286,12 +287,6 @@
       </section>
     </main>
 
-    <script>
-      // Mobile hamburger toggle for work-experience page
-      const weToggle = document.querySelector('.nav-toggle');
-      weToggle && weToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
-      document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
-    </script>
-
+    
   </body>
 </html>

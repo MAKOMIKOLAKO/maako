@@ -353,10 +353,7 @@
         
         lastScroll = currentScroll;
       });
-      // hamburger toggle
-      const ldToggle = document.querySelector('.nav-toggle');
-      ldToggle && ldToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
-      document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
+      // Nav handled in assets/nav.js
     </script>
   </body>
 </html>

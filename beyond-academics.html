@@ -419,9 +419,7 @@
     </main>
 
     <script>
-      const baToggle = document.querySelector('.nav-toggle');
-      baToggle && baToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
-      document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
+      // Nav handled in assets/nav.js
 
       // Simple fade-in animation for hobby cards as they enter viewport
       const cards = document.querySelectorAll('.hobby-card');
