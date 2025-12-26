@@ -1,0 +1,13 @@
+/* Global stylesheet: hide scrollbars while preserving scroll behavior */
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Also hide scrollbars for overflow containers if needed */
+*::-webkit-scrollbar { display: none; }
