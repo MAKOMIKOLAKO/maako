@@ -196,14 +196,7 @@ void loop()
       </article>
     </main>
 
-    <script>
-      // Ensure hamburger wiring still works if nav was injected after this script
-      document.addEventListener('DOMContentLoaded', () => {
-        const toggle = document.querySelector('.nav-toggle');
-        toggle && toggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
-        document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
-      });
-    </script>
+    
   </body>
 </html>
 
@@ -349,12 +342,7 @@ void loop()
     <div id="site-nav"></div>
     <script src="assets/nav.js"></script>
 
-    <script>
-      // hamburger toggle for projects page
-      const projToggle = document.querySelector('.nav-toggle');
-      projToggle && projToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
-      document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
-    </script>
+    
 
   </body>
 </html>
