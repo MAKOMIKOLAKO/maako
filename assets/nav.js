@@ -8,7 +8,7 @@
     const navHtml = `
 <nav>
   <div class="nav-inner">
-    <a class="brand" href="${base}index.html#top">maako fangajei</a>
+    <a class="brand" href="https://maako.dev">maako fangajei</a>
     <button class="nav-toggle" aria-label="Toggle menu"><span class="bar"></span></button>
     <ul class="nav-links">
       <li><a href="${base}work-experience.html">work experience</a></li>
