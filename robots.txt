@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://maako.dev/sitemap.xml
