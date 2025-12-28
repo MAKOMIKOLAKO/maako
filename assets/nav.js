@@ -13,11 +13,11 @@
     <a class="brand" href="https://maako.dev">maako fangajei</a>
     <button class="nav-toggle" aria-label="Toggle menu"><span class="bar"></span></button>
     <ul class="nav-links">
-      <li><a href="${base}work-experience.html">work experience</a></li>
-      <li><a href="${base}education.html">education</a></li>
-      <li><a href="${base}leadership.html">leadership</a></li>
-      <li><a href="${base}projects.html">projects</a></li>
-      <li><a href="${base}beyond-academics.html">beyond academics</a></li>
+      <li><a href="${base}work-experience/">work experience</a></li>
+      <li><a href="${base}education/">education</a></li>
+      <li><a href="${base}leadership/">leadership</a></li>
+      <li><a href="${base}projects/">projects</a></li>
+      <li><a href="${base}beyond-academics/">beyond academics</a></li>
     </ul>
   </div>
 </nav>
