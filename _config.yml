@@ -1,3 +1,4 @@
 theme: jekyll-theme-minimal
 title: Maako's webpage
 description: Bookmark this to keep an eye on my project updates!
+permalink: /:basename/
