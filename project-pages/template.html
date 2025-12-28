@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Template — Maako Fangajei</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/global.css">
+    <style>
+      :root{--bg:#1A170F;--accent:#657A3E;--text:#EBEAE4;--muted:rgba(235,234,228,0.82);--nav-height:60px}
+      *{box-sizing:border-box;margin:0;padding:0}
+      html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial}
+      main{max-width:980px;margin:calc(var(--nav-height) + 2rem) auto;padding:2rem 4%}
+      .project-header{margin-bottom:1.25rem}
+      .project-title{font-size:2rem;color:var(--text);margin-bottom:0.4rem}
+      .project-meta{color:var(--muted);margin-bottom:1rem}
+
+      /* Block container - each block can be text, image, code, or two-column mix */
+      .block{margin:1.25rem 0;padding:0}
+
+      /* Two column layout for alternating image/text */
+      .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:center}
+      .two-col .col{padding:0}
+      .two-col img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+
+      /* Full-width image block */
+      .image-block img{width:100%;height:auto;border-radius:8px;display:block}
+
+      /* Text block */
+      .text-block{color:var(--text);line-height:1.8}
+      .text-block p{margin:0.7rem 0}
+
+      /* Code block styling (distinct background + token color classes) */
+      :root {
+        /* use site palette to blend code blocks with the site */
+        --code-bg: #10120f; /* very dark, close to site background */
+        --code-border: rgba(101,122,62,0.08); /* subtle accent border */
+        --code-accent: var(--accent); /* primary site accent (green) */
+        --code-text: var(--text);
+        --code-key: var(--accent);
+        --code-str: #9fcf7a; /* softer green for strings */
+        --code-cmt: rgba(235,234,228,0.6); /* muted comment color */
+      }
+
+      .code-block {
+        background: linear-gradient(180deg,var(--code-bg),#0b0c0a);
+        border-radius:10px;
+        padding:1rem;
+        margin:0.9rem 0;
+        overflow:auto;
+        border:1px solid var(--code-border);
+        box-shadow:0 6px 18px rgba(0,0,0,0.45) inset;
+        font-family: 'Courier New', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+        font-size:0.92rem;
+        color:var(--code-text);
+        position:relative;
+      }
+
+      .code-block::before{
+        content:'Code';
+        position:absolute;
+        top:8px;
+        right:12px;
+        font-size:0.75rem;
+        color:var(--code-cmt);
+        background:transparent;
+      }
+
+      .code-block pre{margin:0;white-space:pre;line-height:1.45}
+      .code-block code{display:block;color:var(--code-text)}
+
+      /* Optional token classes you can add inside <code> for better readability */
+      .tok-keyword{color:var(--code-key);font-weight:600}
+      .tok-string{color:var(--code-str)}
+      .tok-comment{color:var(--code-cmt);font-style:italic}
+      .tok-fn{color:var(--code-accent)}
+
+      /* Responsive */
+      @media(max-width:900px){.two-col{grid-template-columns:1fr}.project-title{font-size:1.6rem}}
+    </style>
+  </head>
+  <body id="top">
+    <div id="site-nav"></div>
+    <script src="../assets/nav.js"></script>
+
+    <main>
+      <header class="project-header">
+        <h1 class="project-title">Project Title — Short subtitle</h1>
+        <div class="project-meta">Month Year • Tags: example, demo</div>
+      </header>
+
+      <!-- Example sequence: text -> image -> two-column (image + text) -> code -> text -->
+
+      <section class="block text-block">
+        <p>Intro paragraph. Use this block for motivation, summary or an opening paragraph. Add as many paragraphs as you need; they will flow naturally in the blog layout.</p>
+      </section>
+
+      <section class="block image-block">
+        <img src="../assets/projects/discovery/projectone.png" alt="Example image" loading="lazy">
+        <div style="color:var(--muted);font-size:0.9rem;margin-top:0.5rem">Figure 1 — caption for the image</div>
+      </section>
+
+      <section class="block two-col">
+        <div class="col">
+          <img src="../assets/projects/discovery/projecttwo.png" alt="Second image" loading="lazy">
+        </div>
+        <div class="col text-block">
+          <h3 style="color:var(--accent);margin-bottom:0.5rem">Design details</h3>
+          <p>Explain the figure on the left and provide design rationale. This two-column layout is good for alternating visual + explanatory text.</p>
+        </div>
+      </section>
+
+      <section class="block code-block">
+        <pre><code>// Paste code here. Use the <pre><code> wrapper to preserve formatting.
+int ledPin = A0;
+int uTrig = 6;
+int uEcho = 7;
+
+void setup(){
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop(){
+  // example loop
+}
+</code></pre>
+      </section>
+
+      <section class="block text-block">
+        <h3 style="color:var(--accent);margin-bottom:0.5rem">Results & Next Steps</h3>
+        <p>Summarize outcomes, lessons learned, future improvements, and links to code or demos.</p>
+      </section>
+
+      <p style="margin-top:1.25rem"><a href="../projects.html" style="color:var(--accent);text-decoration:none;font-weight:600">← Back to Projects</a></p>
+    </main>
+  </body>
+</html>

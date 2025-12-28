@@ -2,8 +2,10 @@
 (function(){
   function createNav() {
     const path = window.location.pathname;
-    // Determine base for relative links (pages inside /projects/ need ../)
-    const base = path.split('/').includes('projects') ? '../' : '';
+    // Determine base for relative links (pages inside project folders need ../)
+    const parts = path.split('/');
+    const isProjectSubdir = parts.includes('projects') || parts.includes('project-pages');
+    const base = isProjectSubdir ? '../' : '';
 
     const navHtml = `
 <nav>
@@ -14,6 +16,7 @@
       <li><a href="${base}work-experience.html">work experience</a></li>
       <li><a href="${base}education.html">education</a></li>
       <li><a href="${base}leadership.html">leadership</a></li>
+      <li><a href="${base}projects.html">projects</a></li>
       <li><a href="${base}beyond-academics.html">beyond academics</a></li>
     </ul>
   </div>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ECE Discovery Project — Maako Fangajei</title>
+    <link rel="canonical" href="https://maako.github.io/projects/discovery.html">
+    <style>
+      :root{--bg:#1A170F;--accent:#657A3E;--text:#EBEAE4;--muted:rgba(235,234,228,0.82);--nav-height:60px}
+      *{box-sizing:border-box;margin:0;padding:0}
+      html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial}
+
+      main{max-width:900px;margin:calc(var(--nav-height) + 2rem) auto;padding:2rem 4%}
+      .post-hero{border-radius:12px;overflow:hidden;margin-bottom:1.25rem}
+      .post-hero img{width:100%;height:450px;object-fit:cover;display:block}
+      .post-header{margin-bottom:1rem}
+      .post-title{font-size:2rem;color:var(--text);margin-bottom:0.25rem}
+      .post-meta{color:var(--muted);font-size:0.95rem;margin-bottom:1rem}
+      .post-content{color:var(--text);line-height:1.8}
+      .post-content h2{color:var(--accent);margin-top:1.25rem}
+
+      .implementation { display: grid; grid-template-columns: 1fr 1fr; gap:1.5rem; margin:1.5rem 0; }
+      .implementation-image { width: 100%; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+      .implementation-caption { font-size:0.85rem; color:var(--muted); text-align:center; margin-top:0.5rem }
+      .code-block { background: rgba(0,0,0,0.2); border-radius:8px; padding:1rem; margin:1rem 0; overflow-x:auto; font-family:'Courier New',monospace; font-size:0.9rem }
+      .code-block pre{margin:0; white-space:pre-wrap}
+
+      .back-link{display:inline-block;margin-top:1.25rem;color:var(--accent);text-decoration:none;font-weight:600}
+      @media (max-width:900px){ .post-hero img{height:260px} }
+    </style>
+  </head>
+  <body id="top">
+    <div id="site-nav"></div>
+    <script src="../assets/nav.js"></script>
+
+    <main>
+      <article class="post">
+        <header class="post-header">
+          <h1 class="post-title">ECE Discovery Project</h1>
+          <div class="post-meta">November 2025 • Tags: PCB, CAD, Arduino, Embedded</div>
+        </header>
+
+        <section class="post-content">
+          <p>This is the single-project presentation page. Use this space to present the project as a long-form post: motivation, context, design decisions, and outcomes.</p>
+
+          <h2>Overview</h2>
+          <p>Dorm closets are dark. I wanted to create a small, circular, portable motion-activated light that can be stuck to the inside of a closet door via adhesive strips, and turn on whenver a ToF sensor is activated.</p>
+
+          <h2>Implementation Details</h2>
+          <div class="implementation">
+            <div>
+              <p>I started with a simple breadboard prototype using an ultrasonic sensor, switch, and LED. I eventually switched to a TOF sensor for a smaller footprint and moved toward a PCB design.</p>
+            </div>
+            <div>
+              <img src="../assets/projects/discovery/projectone.png" alt="Prototype breadboard" class="implementation-image" loading="lazy">
+              <div class="implementation-caption">Prototype breadboard design</div>
+            </div>
+            <div>
+              <img src="../assets/projects/discovery/projecttwo.png" alt="Draft schematic" class="implementation-image" loading="lazy">
+              <div class="implementation-caption">Draft schematic for the PCB</div>
+            </div>
+            <div>
+              <div class="code-block"><pre><code>// (Arduino prototype code — moved from index)
+int ledPin = A0;
+int uTrig = 6;
+int uEcho = 7;
+
+long duration;
+int distance;
+
+void setup(){
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(uTrig, OUTPUT);
+  pinMode(uEcho, INPUT);
+  Serial.begin(9600);
+}
+
+void loop(){
+  digitalWrite(uTrig, LOW); delayMicroseconds(2);
+  digitalWrite(uTrig, HIGH); delayMicroseconds(10); digitalWrite(uTrig, LOW);
+  duration = pulseIn(uEcho, HIGH);
+  distance = duration * 0.0343 / 2;
+  Serial.print("Distance: "); Serial.println(distance);
+  delay(100);
+  if(distance == 0) digitalWrite(ledPin, LOW);
+  else if(distance <= 100) digitalWrite(ledPin, HIGH);
+  else digitalWrite(ledPin, LOW);
+}
+</code></pre></div>
+            </div>
+          </div>
+
+          <h2>Next Steps</h2>
+          <p>Redo the schematic, finalize footprints, and create a round PCB and custom case.</p>
+          <a class="back-link" href="../projects.html">← Back to projects</a>
+        </section>
+      </article>
+    </main>
+
+  </body>
+</html>

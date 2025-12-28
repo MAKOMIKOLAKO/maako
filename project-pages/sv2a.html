@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Classifying Insulin Dosages — Maako Fangajei</title>
+    <link rel="canonical" href="https://maako.github.io/project-pages/sv2a.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/global.css">
+    <style>
+      :root{--bg:#1A170F;--accent:#657A3E;--text:#EBEAE4;--nav-height:60px}
+      *{box-sizing:border-box;margin:0;padding:0}
+      html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial}
+
+      nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.04);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:0.75rem 1rem;z-index:1000;border-bottom:2px solid var(--accent)}
+      .nav-inner{max-width:1200px;margin:0 auto;position:relative;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:1rem}
+      .nav-toggle{display:none;background:transparent;border:0;width:40px;height:40px;padding:6px;cursor:pointer}
+      .nav-toggle .bar{display:block;width:100%;height:2px;background:var(--text);position:relative}
+      .brand{color:var(--accent);text-decoration:none;font-weight:700;letter-spacing:0.3px;font-size:1.2rem;padding-left:0.5rem}
+      .nav-links{display:flex;gap:2rem;list-style:none;margin:0;padding:0;justify-self:center}
+      .nav-links a{font-family:'DM Sans',inherit;color:var(--text);text-decoration:none;font-size:0.9rem;font-weight:500;padding:0.5rem 1rem;position:relative}
+
+      main{max-width:1000px;margin:calc(var(--nav-height) + 2rem) auto;padding:2rem 4%}
+      .back-link{color:var(--accent);text-decoration:none;font-weight:600}
+
+      /* Full-width image block */
+      .image-block img{width:100%;height:auto;border-radius:8px;display:block}
+      /* Code block styling (distinct background + token color classes) */
+      :root {
+        --code-bg: #0f1113;
+        --code-border: rgba(255,255,255,0.06);
+        --code-accent: #2b6ea3;
+        --code-text: #dbe7ff;
+        --code-key: #7ad0ff;
+        --code-str: #a8e6a1;
+        --code-cmt: #7b8a99;
+      }
+
+      .code-block {
+        background: linear-gradient(180deg,var(--code-bg),#0b0c0a);
+        border-radius:10px;
+        padding:1rem;
+        margin:0.9rem 0;
+        overflow:auto;
+        border:1px solid var(--code-border);
+        box-shadow:0 6px 18px rgba(0,0,0,0.45) inset;
+        font-family: 'Courier New', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+        font-size:0.92rem;
+        color:var(--code-text);
+        position:relative;
+      }
+
+      .code-block::before{
+        content:'Code';
+        position:absolute;
+        top:8px;
+        right:12px;
+        font-size:0.75rem;
+        color:var(--code-cmt);
+        background:transparent;
+      }
+
+      .code-block pre{margin:0;white-space:pre;line-height:1.45}
+      .code-block code{display:block;color:var(--code-text)}
+
+      /* Optional token classes you can add inside <code> for better readability */
+      .tok-keyword{color:var(--code-key);font-weight:600}
+      .tok-string{color:var(--code-str)}
+      .tok-comment{color:var(--code-cmt);font-style:italic}
+      .tok-fn{color:var(--code-accent)}
+    </style>
+  </head>
+  <body>
+    <div id="site-nav"></div>
+    <script src="../assets/nav.js"></script>
+    <main>
+        <h1>Classifying Insulin Dosages</h1>
+        <p class="post-meta">December 2025 • Scikit-learn</p>
+        <p></p>        <br>
+        <h3 style="color:var(--accent);margin-bottom:0.5rem">Background</h3>
+
+        <p>I wanted to brush up on my machine learning skillset. This project was just to remind me how to use numpy, pandas, matplotlib, and scikit-learn for machine learning.</p>
+        <br>
+        <p>The dataset I used is available on Kaggle. It consists of data from 10,000 diabetic patients across 150 hospitals in the span of 10 years. The aim of this project was to use data about their medical history and lifestyle to estimate how their insulin dosages should be adjusted (increase, decrease, keep the same, or remove entirely).</p>
+        <br>
+        <p><a class="back-link" href="https://www.kaggle.com/datasets/robyburns/insulin-dosage/data" target="_blank" rel="noopener noreferrer">Dataset — Kaggle: Insulin Dosage</a></p>
+        <br>
+        <h3 style="color:var(--accent);margin-bottom:0.5rem">Data Preprocessing</h3>
+        <br>
+        <p>The data contains, for each patient, a patient id, gender, age, and medical history data including their weight, glucose levels, insulin sensitivity, and average hours of sleep. Target values are located in the last column and can either be "steady", "up", "down", or "no". I first binarized the columns for family_history and gender; then, I used one-hot encoding to represent the food_intake and previous_medication columns. </p>
+        <br>
+        <p>I then standardized the remaining feature columns. This centers the data around a mean of zero and a standard deviation of one, and is supposed to prevent features with larger scales from dominating models dependent on gradient descent or distance metrics (like the k-nearest-neighbors algorithm).</p>
+        <section class="block code-block">
+        <pre><code># Creating binaries
+lb = LabelBinarizer()
+binarize_map = {
+    'gender': 'male',
+    'family_history': 'yes'
+}
+for col, pos_label in binarize_map.items():
+    df[col + '_bin'] = np.where(df[col] == pos_label, 1, 0)
+
+# One-hot encoding for food and medications
+df = pd.get_dummies(df, columns=['food_intake', 'previous_medications'], dtype = "int")
+
+# Loading features
+features = ["gender_bin", "age", "family_history_bin", "glucose_level", "physical_activity", "food_intake_high", "food_intake_low", "food_intake_medium", "previous_medications_both", "previous_medications_insulin", "previous_medications_oral", "previous_medications_none", "BMI", "HbA1c", "weight", "insulin_sensitivity", "sleep_hours", "creatinine"]
+
+X, y = df[features], df["Insulin"]
+
+# Splitting data
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state = 67)
+
+# Standardizing remaining continuous features
+exclude = ["gender_bin", "family_history_bin", "food_intake_high", "food_intake_medium", "food_intake_low", "food_intake_medium", "previous_medications_both", "previous_medications_insulin", "previous_medications_oral", "previous_medications_none"]
+scale_cols = [col for col in X_train.columns if col not in exclude]
+scaler = StandardScaler()
+X_train[scale_cols] = scaler.fit_transform(X_train[scale_cols])
+X_test[scale_cols] = scaler.transform(X_test[scale_cols])
+
+# For XGBoost
+le = LabelEncoder()
+y_train_enc = le.fit_transform(y_train)
+le.transform(y_test)
+</code></pre>
+      </section>
+        <br>
+        <h3 style="color:var(--accent);margin-bottom:0.5rem">Choosing Models and Grid Search</h3>
+        <br>
+        <p>To choose the models I wanted to explore, I used scikit-learn's algorithm cheatsheet to conclude I should try an SVM classifier and a KNeighbors classifier. I also wanted to refresh my base in tree-based ML algorithms so I chose to include XGBoost and Random Forest classifiers.</p>
+        <br>
+        <p>I used a grid search as opposed to random search as the parameter space I wanted to explore for each model was small. With the help of some research and generative AI I was able to determine which parameters I should test and what values are commonly used in grid searches for each model.</p>
+        <br>
+        <section class="block code-block">
+        <pre><code>
+param_grids = {
+    'logistic' : {
+        'C': [0.1, 1, 10]
+    },
+    'knn' : {
+        "n_neighbors": [3, 5, 7, 11, 15, 21, 25, 30, 35, 40, 45, 50],
+        "weights": ["uniform", "distance"],
+        "metric": ["euclidean", "manhattan"]
+    },
+    'random_forest' : {
+        "n_estimators": [50, 100, 150],
+        "max_depth": [5, 10, 20],
+        "min_samples_split": [2, 5, 10],
+        "min_samples_leaf": [1, 2, 5],
+    },
+    'svc' : {
+        "C": [0.01, 0.1, 1, 10],
+        "kernel": ["linear"]
+    },
+    'xgboost' : {
+        "n_estimators": [50, 100, 150],
+        "max_depth": [3, 5, 7],
+        "learning_rate": [0.01, 0.05, 0.1],
+        "subsample": [0.7, 0.85, 1.0],
+        "colsample_bytree": [0.7, 0.85, 1.0]
+    }, 
+}
+</code></pre>
+      </section>
+        <p>I ran into issues with the XGBoost model initially as I forgot the target values can only use numerical values. To resolve this, I used a label encoder to map the original values to 0, 1, 2, and 3. It was interesting to learn that label encoders are only acceptable to use for target values, not features; it indicates to the model that there is some sort of ordinal relationship in the features that might not actually exist (like for previous_medications, where the options are "insulin", "oral", "none", or "both". It's not like one option is "greater" than the other, so it wouldn't make sense to represent this data in a way that implies there is an order to this column.</p>
+        <br>
+        <h3 style="color:var(--accent);margin-bottom:0.5rem">Data Analysis</h3>
+        <br>
+        <p>I ran the models and found that XGBoost performed extremely well on the training data. Below are the averages and best parameters for each model. For context, I used a random_state param of 67 throughout the project.</p>
+        <section class="block code-block">
+        <pre><code>logistic best params: {'C': 1}
+best performance: 0.8050666666666666
+knn best params: {'metric': 'manhattan', 'n_neighbors': 30, 'weights': 'distance'}
+best performance: 0.8534666666666666
+svc best params: {'C': 10, 'kernel': 'linear'}
+best performance: 0.8158666666666667
+random_forest best params: {'max_depth': 20, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 150}
+best performance: 0.9741333333333333
+xgboost best params: {'colsample_bytree': 0.85, 'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 150, 'subsample': 1.0}
+best performance: 0.9961333333333334
+</code></pre>
+      </section>
+      <p>Considering the impressive performance of the XGBoost model, I decided to investigate its performance in more depth. I used the optimized model to make a set of predictions on the test data:</p>
+      <section class="block code-block">
+    <pre><code>              precision    recall  f1-score   support
+
+        down       0.98      0.98      0.98       146
+          no       0.99      1.00      1.00       177
+      steady       1.00      1.00      1.00      1314
+          up       1.00      1.00      1.00       863
+
+    accuracy                           1.00      2500
+   macro avg       0.99      0.99      0.99      2500
+weighted avg       1.00      1.00      1.00      2500
+    </code></pre>
+    </section>
+    <p>I also obtained the following data regarding feature importances:</p>
+    <section class="block code-block">
+    <pre><code>family_history_bin              0.171230
+insulin_sensitivity             0.126042
+weight                          0.112300
+HbA1c                           0.100749
+previous_medications_insulin    0.088045
+previous_medications_none       0.078661
+sleep_hours                     0.066165
+previous_medications_oral       0.055773
+previous_medications_both       0.050773
+BMI                             0.039458
+    </code></pre>
+    </section>
+    <p>I noticed the data was unbalanced - look at the difference in the number of samples for "steady" vs "no" or "down". I used matplotlib to visualize this imbalance:</p>
+    <br>
+    <section class="block image-block">
+        <img src="../assets/projects/classimbalance.png" alt="Graph showing class labels" loading="lazy">
+        <div style="color:var(--muted);font-size:0.9rem;margin-top:0.5rem">Far more "steady" and "up" labels.</div>
+    </section>
+    <br>
+    <p>This explains why the model performs worse on "down" labels. Using stratified K-fold cross-validation, to maintain an equal proportion of each target class in each fold. I found that f1-scores ranged from ~0.92 to 1, using 50 splits.</p>
+    <br>
+    <p>I added additional regularization parameters to the grid search to tackle overfitting.</p>
+
+    </main>
+  </body>
+</html>
