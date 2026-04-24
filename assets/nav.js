@@ -21,6 +21,7 @@
     </ul>
   </div>
 </nav>
+<div class="site-notice" role="status" aria-live="polite">This website is currently being updated to reflect the most recent academic year.</div>
 `;
 
     const container = document.getElementById('site-nav');
@@ -31,6 +32,8 @@
       temp.innerHTML = navHtml;
       document.body.insertBefore(temp.firstElementChild, document.body.firstChild);
     }
+
+    document.body.classList.add('has-site-notice');
 
     // Wire hamburger toggle
     const toggle = document.querySelector('.nav-toggle');
