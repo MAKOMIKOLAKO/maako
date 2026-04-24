@@ -1,359 +1,486 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Leadership — Maako Fangajei</title>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5WGX12EC2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-J5WGX12EC2');
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/global.css">
-    <style>
-      :root {
-        --bg: #1A170F;
-        --accent: #657A3E;
-        --text: #EBEAE4;
-        --muted: rgba(235,234,228,0.8);
-        --nav-height: 60px;
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leadership — Maako Fangajei</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5WGX12EC2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-J5WGX12EC2');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/global.css">
+  <style>
+    :root {
+      --bg: #1A170F;
+      --accent: #657A3E;
+      --text: #EBEAE4;
+      --muted: rgba(235, 234, 228, 0.8);
+      --nav-height: 60px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+      border-bottom: 2px solid var(--accent);
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    nav.hide {
+      transform: translateY(-100%);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+      cursor: pointer
+    }
+
+    .nav-toggle .bar {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--text);
+      position: relative
+    }
+
+    .nav-toggle .bar::before,
+    .nav-toggle .bar::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--text)
+    }
+
+    .nav-toggle .bar::before {
+      top: -8px
+    }
+
+    .nav-toggle .bar::after {
+      top: 8px
+    }
+
+    .brand {
+      position: relative;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      font-size: 1.2rem;
+      padding-left: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      justify-self: center;
+    }
+
+    .nav-links a {
+      font-family: 'DM Sans', inherit;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      padding: 0.5rem 1rem;
+      position: relative;
+      transition: color 0.18s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: calc(var(--nav-height) + 2rem) auto;
+      padding: 2rem 4%;
+    }
+
+    .page-title {
+      margin: 1rem 0 2rem;
+    }
+
+    .page-title h1 {
+      font-size: 2rem;
+      color: var(--text);
+    }
+
+    .page-sub {
+      color: var(--muted);
+      margin-top: 0.45rem;
+    }
+
+    .leadership-grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .leadership-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .leadership-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      gap: 2rem;
+    }
+
+    .role {
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .org {
+      color: var(--text);
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .duration {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .leadership-content {
+      display: block;
+      width: 100%;
+    }
+
+    .leadership-text p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .leadership-text ul {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 1rem 0;
+      padding-left: 1.2rem;
+    }
+
+    .leadership-media {
+      position: relative;
+    }
+
+    .leadership-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: rgba(101, 122, 62, 0.1);
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .leadership-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .leadership-image:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .leadership-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .leadership-content {
+        grid-template-columns: 1fr;
       }
+    }
 
-      * { box-sizing: border-box; margin:0; padding:0; }
-      html,body { height:100%; background:var(--bg); color:var(--text); font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.04);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        padding: 0.75rem 1rem;
-        z-index: 1000;
-        border-bottom: 2px solid var(--accent);
-        transform: translateY(0);
-        transition: transform 0.3s ease;
-      }
-
-      nav.hide { transform: translateY(-100%); }
-
-      .nav-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-        display: grid;
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .nav-toggle{display:none;background:transparent;border:0;width:40px;height:40px;padding:6px;cursor:pointer}
-      .nav-toggle .bar{display:block;width:100%;height:2px;background:var(--text);position:relative}
-      .nav-toggle .bar::before,.nav-toggle .bar::after{content:'';position:absolute;left:0;width:100%;height:2px;background:var(--text)}
-      .nav-toggle .bar::before{top:-8px}.nav-toggle .bar::after{top:8px}
-
-      .brand {
-        position: relative;
-        color: var(--accent);
-        text-decoration: none;
-        font-weight: 700;
-        letter-spacing: 0.3px;
-        font-size: 1.2rem;
-        padding-left: 0.5rem;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        justify-self: center;
-      }
-
-      .nav-links a {
-        font-family: 'DM Sans', inherit;
-        color: var(--text);
-        text-decoration: none;
-        text-transform: none;
-        font-size: 0.9rem;
-        font-weight: 500;
-        letter-spacing: 1.2px;
-        padding: 0.5rem 1rem;
-        position: relative;
-        transition: color 0.18s ease;
-      }
-
-      .nav-links a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent);
-        transition: width 0.3s ease;
-      }
-
-      .nav-links a:hover::after { width: 100%; }
-      .nav-links a:hover { color: rgba(255,255,255,0.95); }
-
-      main {
-        max-width: 1200px;
-        margin: calc(var(--nav-height) + 2rem) auto;
-        padding: 2rem 4%;
-      }
-
-  .page-title { margin: 1rem 0 2rem; }
-      .page-title h1 { font-size: 2rem; color: var(--text); }
-      .page-sub { color: var(--muted); margin-top: 0.45rem; }
-
-      .leadership-grid {
-        display: grid;
-        gap: 2.5rem;
-      }
-
-      .leadership-box {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid rgba(255,255,255,0.03);
-        border-radius: 12px;
-        padding: 2rem;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-      }
-
+    @media (max-width: 768px) {
       .leadership-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 1.5rem;
-        gap: 2rem;
+        flex-direction: column;
+        gap: 0.4rem;
       }
 
       .role {
-        font-size: 1.4rem;
-        color: var(--accent);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
       }
 
-      .org {
-        color: var(--text);
-        font-size: 1.1rem;
-        margin-bottom: 0.3rem;
+      .page-title h1 {
+        font-size: 1.6rem;
       }
 
-      .duration {
-        color: var(--muted);
-        font-size: 0.9rem;
+      .nav-toggle {
+        display: block
       }
 
-      .leadership-content {
+      .nav-links {
+        display: none
+      }
+
+      body.nav-open .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: rgba(26, 23, 15, 0.98);
+        padding: 0.75rem 1rem 1rem 1rem;
+        gap: 0.5rem;
+        z-index: 1001
+      }
+
+      body.nav-open .nav-links a {
         display: block;
-        width: 100%;
+        padding: 0.6rem 1rem
       }
+    }
+  </style>
+</head>
 
-      .leadership-text p {
-        color: var(--muted);
-        line-height: 1.7;
-        margin-bottom: 1rem;
-      }
+<body id="top">
+  <div id="site-nav"></div>
+  <script src="assets/nav.js"></script>
 
-      .leadership-text ul {
-        color: var(--muted);
-        line-height: 1.7;
-        margin: 1rem 0;
-        padding-left: 1.2rem;
-      }
+  <main>
+    <div class="page-title">
+      <h1>Leadership</h1>
+      <div class="page-sub"></div>
+    </div>
 
-      .leadership-media {
-        position: relative;
-      }
-
-      .leadership-image {
-        width: 100%;
-        aspect-ratio: 4/3;
-        background: rgba(101, 122, 62, 0.1);
-        border: 2px solid var(--accent);
-        border-radius: 8px;
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .leadership-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-      }
-
-      .leadership-image:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      }
-
-      .leadership-image:hover img {
-        transform: scale(1.05);
-      }
-
-      /* Responsive Design */
-      @media (max-width: 1024px) {
-        .leadership-content {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .leadership-head {
-          flex-direction: column;
-          gap: 0.4rem;
-        }
-        .role {
-          font-size: 1.2rem;
-        }
-        .page-title h1 {
-          font-size: 1.6rem;
-        }
-
-        .nav-toggle{ display:block }
-        .nav-links{ display:none }
-        body.nav-open .nav-links{ display:flex; flex-direction:column; position:absolute; top:var(--nav-height); left:0; right:0; background:rgba(26,23,15,0.98); padding:0.75rem 1rem 1rem 1rem; gap:0.5rem; z-index:1001 }
-        body.nav-open .nav-links a{ display:block; padding:0.6rem 1rem }
-      }
-    </style>
-  </head>
-  <body id="top">
-    <div id="site-nav"></div>
-    <script src="assets/nav.js"></script>
-
-    <main>
-      <div class="page-title">
-  <h1>Leadership</h1>
-        <div class="page-sub"></div>
-      </div>
-
-      <section class="leadership-grid">
-        <!-- Example Leadership Role 1 -->
-        <article class="leadership-box">
-          <div class="leadership-head">
-            <div>
-              <div class="role">Captain & Lead Engineer</div>
-              <div class="org">VEX Robotics Team 21052A</div>
-              <div class="duration">Nov 2022 - Apr 2025</div>
-            </div>
+    <section class="leadership-grid">
+      <article class="leadership-box">
+        <div class="leadership-head">
+          <div>
+            <div class="role">Treasurer</div>
+            <div class="org">Wearable Exoskeletons and Assistive Robotics @ Georgia Tech (WEAR @ GT)</div>
+            <div class="duration">Jan 2026 - Present</div>
           </div>
-          <div class="leadership-content">
-            <div class="leadership-text">
-              <p>I joined my school's VEX robotics team in its infancy, in 2022. Since then, I served as captain of Five Rings Robotics (Team 21052A) for the 2023/24 season, leading the team to qualify for the World Finals in Dallas of that season. The year after, I served as Lead Engineer for the A team, introducing a new drivetrain setup and improved techniques for stability and reliabilty that helped us develop significantly over the previous year.</p>
-              <ul>
-                <li>Directed a six-member robotics team to qualify for and compete in the 2024 VEX World Finals in Dallas, Texas.</li>
-                <li>Directed engineering across mechanical, electrical, and coding decisions during the project lifecycle.</li>
-                <li>Co-authored and maintained a 100+ page engineering notebook documenting design rationale and product testing./li>
-                <li>Expanded team presence through social media management and STEM outreach programs in the local community.</li>
-              </ul>
-              <!--<p>This was one of the most formative experiences of my time in high school. It introduced me to engineering and robotics, but more importantly, connected me with dozens of amazing, driven, talented students who I got to know across that three year period. I also got to know and get closer to our coach and mentor, Mr. Turland, who made it all possible and was always there for us be it as a teacher, mentor, or even just as an emotional support and mediator.</p>-->
-            </div>
-            <!-- leadership-media removed, only text remains -->
+        </div>
+        <div class="leadership-content">
+          <div class="leadership-text">
+            <p>Serve as Treasurer for WEAR @ GT, supporting the club's financial operations and budget planning.</p>
+            <ul>
+              <li>Manage club finances, including tracking revenue, expenses, and budget allocations.</li>
+              <li>Establish financial systems and internal controls, including dues collection, reimbursements, and
+                recordkeeping.</li>
+              <li>Review and approve funding requests, oversee expenditures, and support budgeting and merchandise
+                sales.</li>
+            </ul>
           </div>
-        </article>
+        </div>
+      </article>
 
-        <!-- Example Leadership Role 2 -->
-        <article class="leadership-box">
-          <div class="leadership-head">
-            <div>
-              <div class="role">Co-President</div>
-              <div class="org">Football for All</div>
-              <div class="duration">Nov 2022 - Mar 2025</div>
-            </div>
+      <article class="leadership-box">
+        <div class="leadership-head">
+          <div>
+            <div class="role">Captain & Lead Engineer</div>
+            <div class="org">VEX Robotics Team 21052A</div>
+            <div class="duration">September 2022 - April 2025</div>
           </div>
-          <div class="leadership-content">
-            <div class="leadership-text">
-              <p>Started with my friends in Fall 2022, the main aim of this group has always been to use football as a tool to connect our community and support the most vulnerable, be it financially or emotionally. I served as Co-President from Fall 2023 to Spring 2025.</p>
-              <ul>
-                <li>Oversaw the organization of four school-wide charity football events, raising funds for local EVAM refugee center and drawing attendance of over 100 people per event.</li>
-                <li>Coordinated logistics with school administration to secure event venues and approval for large-scale student events.</li>
-                <li>Directed 30+ student volunteers, delegating tasks to ensure smooth execution of large-scale events.</li>
-              </ul>
-              <p></p>
-            </div>
-            <!-- leadership-media removed, only text remains -->
+        </div>
+        <div class="leadership-content">
+          <div class="leadership-text">
+            <p>I joined my school's VEX robotics team in its infancy in 2022. I served as captain during the 2023/24
+              season and later as lead engineer in 2024/25, helping guide the team competitively while directing major
+              engineering decisions across the build season.</p>
+            <ul>
+              <li>Directed a six-member robotics team to qualify for and compete in the 2024 VEX World Finals in Dallas,
+                Texas.</li>
+              <li>Directed engineering across mechanical, electrical, and coding decisions during the project lifecycle.
+              </li>
+              <li>Co-authored and maintained a 100+ page engineering notebook documenting design rationale and product
+                testing.</li>
+              <li>Expanded team presence through social media management and STEM outreach programs in the local
+                community.</li>
+            </ul>
+            <!--<p>This was one of the most formative experiences of my time in high school. It introduced me to engineering and robotics, but more importantly, connected me with dozens of amazing, driven, talented students who I got to know across that three year period. I also got to know and get closer to our coach and mentor, Mr. Turland, who made it all possible and was always there for us be it as a teacher, mentor, or even just as an emotional support and mediator.</p>-->
           </div>
-        </article>
+          <!-- leadership-media removed, only text remains -->
+        </div>
+      </article>
 
-        <!-- Add more leadership-box articles as needed -->
-
-      </section>
-
-      <!-- Involvements: non-leadership roles, memberships, and other activities -->
-      <div class="page-title" style="margin-top:2.5rem">
-        <h1>Involvements</h1>
-        <div class="page-sub">Memberships, roles, and activities that contributed to my experience but were not formal leadership positions.</div>
-      </div>
-
-      <section class="leadership-grid" id="involvements">
-        <!-- Example involvement entry (move non-leadership items here) -->
-        <article class="leadership-box">
-          <div class="leadership-head">
-            <div>
-              <div class="role">Peer Instructor</div>
-              <div class="org">The Hive Makerspace</div>
-              <div class="duration">From January 2026</div>
-            </div>
+      <!-- Example Leadership Role 2 -->
+      <article class="leadership-box">
+        <div class="leadership-head">
+          <div>
+            <div class="role">Co-President</div>
+            <div class="org">Football for All</div>
+            <div class="duration">Nov 2022 - Mar 2025</div>
           </div>
-          <div class="leadership-content">
-            <div class="leadership-text">
-              <p></p>
-            </div>
+        </div>
+        <div class="leadership-content">
+          <div class="leadership-text">
+            <p>Started with my friends in Fall 2022, the main aim of this group has always been to use football as a
+              tool to connect our community and support the most vulnerable, be it financially or emotionally. I served
+              as Co-President from Fall 2023 to Spring 2025.</p>
+            <ul>
+              <li>Oversaw the organization of four school-wide charity football events, raising funds for local EVAM
+                refugee center and drawing attendance of over 100 people per event.</li>
+              <li>Coordinated logistics with school administration to secure event venues and approval for large-scale
+                student events.</li>
+              <li>Directed 30+ student volunteers, delegating tasks to ensure smooth execution of large-scale events.
+              </li>
+            </ul>
+            <p></p>
           </div>
-        </article>
+          <!-- leadership-media removed, only text remains -->
+        </div>
+      </article>
 
-        <article class="leadership-box">
-          <div class="leadership-head">
-            <div>
-              <div class="role">Policy Analyst</div>
-              <div class="org">Science & Technology Policy Connections</div>
-              <div class="duration">September 2025 - Present</div>
-            </div>
-          </div>
-          <div class="leadership-content">
-            <div class="leadership-text">
-              <p>Contribute to policy analysis and discussions focused on technology and public policy. Participate in research workshops and collaborative writing projects.</p>
-            </div>
-          </div>
-        </article>
-      </section>
-    </main>
+      <!-- Add more leadership-box articles as needed -->
 
-    <script>
-      // Navigation bar hide/show on scroll
-      let lastScroll = 0;
-      const nav = document.querySelector('nav');
-      
-      window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll <= 0) {
-          nav.classList.remove('hide');
-          return;
-        }
-        
-        if (currentScroll > lastScroll && !nav.classList.contains('hide')) {
-          // Scrolling down
-          nav.classList.add('hide');
-        } else if (currentScroll < lastScroll && nav.classList.contains('hide')) {
-          // Scrolling up
-          nav.classList.remove('hide');
-        }
-        
-        lastScroll = currentScroll;
-      });
-      // Nav handled in assets/nav.js
-    </script>
-  </body>
+    </section>
+
+    <!-- Involvements: non-leadership roles, memberships, and other activities -->
+    <div class="page-title" style="margin-top:2.5rem">
+      <h1>Involvements</h1>
+      <div class="page-sub">Memberships, roles, and activities that contributed to my experience but were not formal
+        leadership positions.</div>
+    </div>
+
+    <section class="leadership-grid" id="involvements">
+      <!-- Example involvement entry (move non-leadership items here) -->
+      <article class="leadership-box">
+        <div class="leadership-head">
+          <div>
+            <div class="role">Peer Instructor</div>
+            <div class="org">The Hive Makerspace</div>
+            <div class="duration">Jan 2026 - Present</div>
+          </div>
+        </div>
+        <div class="leadership-content">
+          <div class="leadership-text">
+            <p>Peer Instructor at the campus makerspace supporting front-desk operations and 3D printing services.</p>
+            <ul>
+              <li>Assist users with print setup, troubleshooting, and safe equipment use.</li>
+              <li>Maintain smooth daily operations during open lab hours.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="leadership-box">
+        <div class="leadership-head">
+          <div>
+            <div class="role">Policy Analyst</div>
+            <div class="org">Science & Technology Policy Connections</div>
+            <div class="duration">September 2025 - Present</div>
+          </div>
+        </div>
+        <div class="leadership-content">
+          <div class="leadership-text">
+            <p>Contribute to policy analysis and discussions focused on technology and public policy. Participate in
+              research workshops and collaborative writing projects.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    // Navigation bar hide/show on scroll
+    let lastScroll = 0;
+    const nav = document.querySelector('nav');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll <= 0) {
+        nav.classList.remove('hide');
+        return;
+      }
+
+      if (currentScroll > lastScroll && !nav.classList.contains('hide')) {
+        // Scrolling down
+        nav.classList.add('hide');
+      } else if (currentScroll < lastScroll && nav.classList.contains('hide')) {
+        // Scrolling up
+        nav.classList.remove('hide');
+      }
+
+      lastScroll = currentScroll;
+    });
+    // Nav handled in assets/nav.js
+  </script>
+</body>
+
 </html>
