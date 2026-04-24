@@ -1,5 +1,5 @@
 // Inject shared site navbar and wire mobile behavior
-(function(){
+(function () {
   function createNav() {
     const path = window.location.pathname;
     // Determine base for relative links (pages inside project folders need ../)
@@ -21,7 +21,6 @@
     </ul>
   </div>
 </nav>
-<div class="site-notice" role="status" aria-live="polite">This website is currently being updated to reflect the most recent academic year.</div>
 `;
 
     const container = document.getElementById('site-nav');
@@ -31,6 +30,22 @@
       const temp = document.createElement('div');
       temp.innerHTML = navHtml;
       document.body.insertBefore(temp.firstElementChild, document.body.firstChild);
+    }
+
+    const existingNotice = document.querySelector('.site-notice');
+    if (!existingNotice) {
+      const notice = document.createElement('div');
+      notice.className = 'site-notice';
+      notice.setAttribute('role', 'status');
+      notice.setAttribute('aria-live', 'polite');
+      notice.textContent = 'This website is currently being updated to reflect the most recent academic year.';
+
+      const nav = document.querySelector('nav');
+      if (nav && nav.parentNode) {
+        nav.parentNode.insertBefore(notice, nav.nextSibling);
+      } else {
+        document.body.insertBefore(notice, document.body.firstChild);
+      }
     }
 
     document.body.classList.add('has-site-notice');
