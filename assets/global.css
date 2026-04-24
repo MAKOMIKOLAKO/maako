@@ -1,16 +1,22 @@
 /* Global stylesheet: hide scrollbars while preserving scroll behavior */
-html, body {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+html,
+body {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 /* Also hide scrollbars for overflow containers if needed */
-*::-webkit-scrollbar { display: none; }
+*::-webkit-scrollbar {
+  display: none;
+}
 
 :root {
   --bg: #1A170F;
@@ -35,7 +41,9 @@ nav {
   transition: transform 0.3s ease;
 }
 
-nav.hide { transform: translateY(-100%); }
+nav.hide {
+  transform: translateY(-100%);
+}
 
 .site-notice {
   position: fixed;
@@ -54,6 +62,12 @@ nav.hide { transform: translateY(-100%); }
   font-size: 0.88rem;
   letter-spacing: 0.2px;
   z-index: 999;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+nav.hide+.site-notice {
+  transform: translateY(calc(-1 * var(--nav-height)));
 }
 
 body.has-site-notice main {
@@ -79,22 +93,110 @@ body.has-site-notice main {
   cursor: pointer;
   padding: 6px;
 }
-.nav-toggle .bar { display: block; width: 100%; height: 2px; background: var(--text); position: relative; }
-.nav-toggle .bar::before, .nav-toggle .bar::after { content: ''; position: absolute; left: 0; width: 100%; height: 2px; background: var(--text); }
-.nav-toggle .bar::before { top: -8px; } .nav-toggle .bar::after { top: 8px; }
 
-.brand { color: var(--accent); text-decoration: none; font-weight: 700; letter-spacing: 0.3px; font-size: 1.2rem; padding-left: 0.5rem; }
+.nav-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  position: relative;
+}
 
-.nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; padding: 0; justify-self: center; }
-.nav-links a { font-family: 'DM Sans', inherit; color: var(--text); text-decoration: none; text-transform: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 1.2px; padding: 0.5rem 1rem; position: relative; transition: color 0.18s ease; }
-.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
-.nav-links a:hover::after { width: 100%; } .nav-links a:hover { color: rgba(255,255,255,0.95); }
+.nav-toggle .bar::before,
+.nav-toggle .bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+}
 
-@media(max-width:900px){
-  .nav-toggle{display:block}
-  .nav-links{display:none}
-  body.nav-open .nav-links{display:flex;flex-direction:column;position:absolute;top:var(--nav-height);left:0;right:0;background:rgba(26,23,15,0.98);padding:0.75rem 1rem 1rem 1rem;gap:0.5rem;z-index:1001}
-  body.nav-open .nav-links a{display:block;padding:0.6rem 1rem}
+.nav-toggle .bar::before {
+  top: -8px;
+}
+
+.nav-toggle .bar::after {
+  top: 8px;
+}
+
+.brand {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  font-size: 1.2rem;
+  padding-left: 0.5rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-self: center;
+}
+
+.nav-links a {
+  font-family: 'DM Sans', inherit;
+  color: var(--text);
+  text-decoration: none;
+  text-transform: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  padding: 0.5rem 1rem;
+  position: relative;
+  transition: color 0.18s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+@media(max-width:900px) {
+  .nav-toggle {
+    display: block
+  }
+
+  .nav-links {
+    display: none
+  }
+
+  body.nav-open .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: rgba(26, 23, 15, 0.98);
+    padding: 0.75rem 1rem 1rem 1rem;
+    gap: 0.5rem;
+    z-index: 1001
+  }
+
+  body.nav-open .nav-links a {
+    display: block;
+    padding: 0.6rem 1rem
+  }
+
   .site-notice {
     font-size: 0.8rem;
     padding: 0.6rem 0.85rem;
@@ -104,18 +206,31 @@ body.has-site-notice main {
 /* Project overview card link colors: use site palette and avoid browser default blues */
 .projects-grid .project-title a,
 .project-section .project-title a {
-  color: inherit; /* inherit the .project-title color (usually --accent) */
+  color: inherit;
+  /* inherit the .project-title color (usually --accent) */
   text-decoration: none;
   transition: color 0.18s ease, opacity 0.18s ease;
 }
+
 .projects-grid .project-title a:visited,
-.project-section .project-title a:visited { color: inherit; opacity: 0.9; }
+.project-section .project-title a:visited {
+  color: inherit;
+  opacity: 0.9;
+}
+
 .projects-grid .project-title a:hover,
 .project-section .project-title a:hover {
-  color: rgba(255,255,255,0.95);
+  color: rgba(255, 255, 255, 0.95);
   text-decoration: underline;
 }
 
 /* Ensure small action links use the accent color consistently */
-.project-links a { color: var(--accent); text-decoration: none; }
-.project-links a:hover { color: rgba(255,255,255,0.95); text-decoration: underline; }
+.project-links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.project-links a:hover {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: underline;
+}
