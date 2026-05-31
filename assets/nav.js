@@ -17,7 +17,6 @@
       <li><a href="${base}education">education</a></li>
       <li><a href="${base}leadership">leadership</a></li>
       <li><a href="${base}projects">projects</a></li>
-      <li><a href="${base}beyond-academics">beyond academics</a></li>
     </ul>
   </div>
 </nav>

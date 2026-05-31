@@ -125,6 +125,15 @@
   .tag{ background:rgba(255,255,255,0.03); color:var(--muted); padding:0.3rem 0.6rem; border-radius:999px; font-size:0.85rem }
   .project-links{ margin-top:auto; display:flex; gap:0.75rem }
   .project-links a{ color:var(--accent); text-decoration:none; font-weight:600 }
+  .status-badge{ display:inline-flex; align-items:center; gap:0.35rem; font-size:0.78rem; font-weight:600; letter-spacing:0.4px; padding:0.25rem 0.65rem; border-radius:999px; }
+  .status-badge.live{ background:rgba(101,122,62,0.18); color:#8fab5a; border:1px solid rgba(101,122,62,0.35); }
+  .status-badge.live::before{ content:''; width:6px; height:6px; border-radius:50%; background:#8fab5a; display:inline-block; animation:pulse 2s infinite; }
+  .status-badge.in-dev{ background:rgba(180,140,60,0.12); color:#c9a84c; border:1px solid rgba(180,140,60,0.3); }
+  .status-badge.completed{ background:rgba(255,255,255,0.04); color:var(--muted); border:1px solid rgba(255,255,255,0.08); }
+  @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:0.35} }
+  .project-placeholder{ width:100%; aspect-ratio:16/10; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem; }
+  .project-placeholder .pl-label{ font-size:1.1rem; font-weight:700; color:var(--accent); letter-spacing:0.5px; }
+  .project-placeholder .pl-sub{ font-size:0.75rem; color:var(--muted); letter-spacing:1px; text-transform:uppercase; }
 
       @media(max-width:900px){
         .projects-grid{grid-template-columns:1fr}
@@ -153,7 +162,7 @@
           <div class="project-media">
             <a href="project-pages/neurosphere.html"><img src="assets/projects/discovery/projectone.png" alt="NeuroSphere screenshot" loading="lazy"></a>
           </div>
-         
+
           <div class="project-body">
             <div class="project-sub">Dec 19, 2025 • Three.js</div>
             <h3 class="project-title"><a href="project-pages/neurosphere.html">NeuroSphere - Interactive 3D Brain Atlas</a></h3>
@@ -163,17 +172,63 @@
         </article>
         -->
 
+        <!-- Corpus -->
         <article class="project-section">
           <div class="project-media">
-            <a href="project-pages/sv2a.html"><img src="assets/projects/dataset-cover.jpg" alt="Stethoscope next to insulin medication" loading="lazy"></a>
+            <div class="project-placeholder" style="background:rgba(101,122,62,0.07);">
+              <span class="pl-label">Corpus</span>
+              <span class="pl-sub">Research Intelligence</span>
+            </div>
           </div>
           <div class="project-body">
-            <div class="project-sub">Dec 2025 • Scikit-Learn</div>
-            <h3 class="project-title"><a href="project-pages/sv2a.html">Machine Learning Classification for Insulin Dosage Prediction</a></h3>
-            <p class="project-desc">Built and evaluated a supervised classification pipeline using Logistic Regression, KNN, SVC, Random Forest, and XGBoost to estimate how insulin dosage should be adjusted for UK diabetes patients.</p>
-            <div class="project-links"><a href="project-pages/sv2a.html">View Project ›</a></div>
+            <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;">
+              <div class="project-sub">2025 – Present</div>
+              <span class="status-badge live">Live — usecorpus.app</span>
+            </div>
+            <h3 class="project-title"><a href="https://usecorpus.app" target="_blank" rel="noopener">Corpus — Collaborative Research Intelligence</a></h3>
+            <p class="project-desc">Corpus is a live collaborative research platform built from scratch as my first full-stack project. It lets researchers organize, annotate, and semantically search academic sources in real time, competing directly with tools like Zotero and Mendeley. The stack includes a Next.js 14/TypeScript frontend, Neon PostgreSQL with Prisma and pgvector for semantic search, Stripe for live payments, and a companion Chrome extension submitted to the Chrome Web Store.</p>
+            <div class="project-meta">
+              <span class="tag">Next.js 14</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Prisma</span>
+              <span class="tag">pgvector</span>
+              <span class="tag">Stripe</span>
+              <span class="tag">NextAuth</span>
+              <span class="tag">Gemini Flash</span>
+              <span class="tag">OpenAI Embeddings</span>
+              <span class="tag">Chrome Extension</span>
+            </div>
+            <div class="project-links"><a href="https://usecorpus.app" target="_blank" rel="noopener">Visit Corpus ›</a></div>
           </div>
         </article>
+
+        <!-- drift. -->
+        <article class="project-section">
+          <div class="project-media">
+            <div class="project-placeholder" style="background:rgba(180,140,60,0.06);">
+              <span class="pl-label">drift.</span>
+              <span class="pl-sub">Context Engine</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div style="display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap;">
+              <div class="project-sub">2026 – Present</div>
+              <span class="status-badge in-dev">In Development</span>
+            </div>
+            <h3 class="project-title">drift. — Voice-Based Personal Context Engine</h3>
+            <p class="project-desc">drift. is a voice-first personal context engine built around a "speak and forget" philosophy. Users speak to update named threads of persistent information — no ambient listening, no typing. The backend is built on FastAPI with Supabase and pgvector for vector storage, Deepgram for speech-to-text, and the Claude API for context synthesis and retrieval. Designed to feel like offloading your mental state, not managing an app.</p>
+            <div class="project-meta">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">pgvector</span>
+              <span class="tag">Deepgram</span>
+              <span class="tag">Claude API</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+        </article>
+
       </section>
 
     </main>
