@@ -19,24 +19,57 @@ body::-webkit-scrollbar {
 }
 
 :root {
-  --bg: #1A170F;
-  --accent: #657A3E;
-  --text: #EBEAE4;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f6ff;
+  --bg-tertiary: #e8f2ff;
+  --accent: #7ab3e0;
+  --accent-light: #c8dff5;
+  --accent-dark: #4a8bbf;
+  --text-primary: #1a2433;
+  --text-secondary: #4a5a6e;
+  --text-muted: #7a8fa3;
+  --border: #d0e4f5;
+  /* legacy aliases used by per-page styles */
+  --bg: #ffffff;
+  --text: #1a2433;
+  --muted: #4a5a6e;
   --nav-height: 60px;
   --site-notice-height: 38px;
 }
 
-/* Shared navbar styles (moved from inline index styles to ensure consistency) */
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset anchor jumps for fixed navbar */
+section[id] {
+  scroll-margin-top: 64px;
+}
+
+/* Active nav link */
+nav a.active {
+  color: var(--accent-dark);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Selection highlight */
+::selection {
+  background: var(--accent-light);
+  color: var(--text-primary);
+}
+
+/* Shared navbar styles */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-secondary);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   padding: 0.75rem 1rem;
   z-index: 1000;
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 1px solid var(--border);
   transform: translateY(0);
   transition: transform 0.3s ease;
 }
@@ -55,9 +88,9 @@ nav.hide {
   align-items: center;
   justify-content: center;
   padding: 0.55rem 1rem;
-  background: rgba(101, 122, 62, 0.18);
-  border-bottom: 1px solid rgba(101, 122, 62, 0.45);
-  color: var(--text);
+  background: rgba(122, 179, 224, 0.12);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
   text-align: center;
   font-size: 0.88rem;
   letter-spacing: 0.2px;
@@ -98,7 +131,7 @@ body.has-site-notice main {
   display: block;
   width: 100%;
   height: 2px;
-  background: var(--text);
+  background: var(--text-secondary);
   position: relative;
 }
 
@@ -109,7 +142,7 @@ body.has-site-notice main {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--text);
+  background: var(--text-secondary);
 }
 
 .nav-toggle .bar::before {
@@ -121,7 +154,7 @@ body.has-site-notice main {
 }
 
 .brand {
-  color: var(--accent);
+  color: var(--accent-dark);
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.3px;
@@ -139,7 +172,7 @@ body.has-site-notice main {
 
 .nav-links a {
   font-family: 'DM Sans', inherit;
-  color: var(--text);
+  color: var(--text-secondary);
   text-decoration: none;
   text-transform: none;
   font-size: 0.9rem;
@@ -166,7 +199,7 @@ body.has-site-notice main {
 }
 
 .nav-links a:hover {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--accent-dark);
 }
 
 @media(max-width:900px) {
@@ -185,7 +218,7 @@ body.has-site-notice main {
     top: var(--nav-height);
     left: 0;
     right: 0;
-    background: rgba(26, 23, 15, 0.98);
+    background: rgba(240, 246, 255, 0.98);
     padding: 0.75rem 1rem 1rem 1rem;
     gap: 0.5rem;
     z-index: 1001
@@ -202,34 +235,68 @@ body.has-site-notice main {
   }
 }
 
-/* Project overview card link colors: use site palette and avoid browser default blues */
+/* Global link styles */
+a {
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--accent-dark);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* h2 section delineation */
+h2 {
+  border-left: 2px solid var(--accent);
+  padding-left: 0.5rem;
+}
+
+/* Content image styling */
+.image-container img,
+.timeline-image img,
+img.content-img {
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(122, 179, 224, 0.15);
+}
+
+/* hr / dividers */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* Project overview card link colors */
 .projects-grid .project-title a,
 .project-section .project-title a {
-  color: inherit;
-  /* inherit the .project-title color (usually --accent) */
+  color: var(--accent-dark);
   text-decoration: none;
   transition: color 0.18s ease, opacity 0.18s ease;
 }
 
 .projects-grid .project-title a:visited,
 .project-section .project-title a:visited {
-  color: inherit;
+  color: var(--accent-dark);
   opacity: 0.9;
 }
 
 .projects-grid .project-title a:hover,
 .project-section .project-title a:hover {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--accent-dark);
   text-decoration: underline;
 }
 
-/* Ensure small action links use the accent color consistently */
+/* Small action links */
 .project-links a {
-  color: var(--accent);
+  color: var(--accent-dark);
   text-decoration: none;
 }
 
 .project-links a:hover {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--accent-dark);
   text-decoration: underline;
 }

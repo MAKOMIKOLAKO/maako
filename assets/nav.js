@@ -13,10 +13,11 @@
     <a class="brand" href="https://maako.dev">maako fangajei</a>
     <button class="nav-toggle" aria-label="Toggle menu"><span class="bar"></span></button>
     <ul class="nav-links">
-      <li><a href="${base}work-experience">work experience</a></li>
-      <li><a href="${base}education">education</a></li>
-      <li><a href="${base}leadership">leadership</a></li>
-      <li><a href="${base}projects">projects</a></li>
+      <li><a href="#about">about me</a></li>
+      <li><a href="#work-experience">experience</a></li>
+      <li><a href="#education">education</a></li>
+      <li><a href="#leadership">leadership</a></li>
+      <li><a href="#projects">projects</a></li>
     </ul>
   </div>
 </nav>
@@ -30,24 +31,6 @@
       temp.innerHTML = navHtml;
       document.body.insertBefore(temp.firstElementChild, document.body.firstChild);
     }
-
-    const existingNotice = document.querySelector('.site-notice');
-    if (!existingNotice) {
-      const notice = document.createElement('div');
-      notice.className = 'site-notice';
-      notice.setAttribute('role', 'status');
-      notice.setAttribute('aria-live', 'polite');
-      notice.textContent = 'This website is currently being updated to reflect the most recent academic year.';
-
-      const nav = document.querySelector('nav');
-      if (nav && nav.parentNode) {
-        nav.parentNode.insertBefore(notice, nav.nextSibling);
-      } else {
-        document.body.insertBefore(notice, document.body.firstChild);
-      }
-    }
-
-    document.body.classList.add('has-site-notice');
 
     // Wire hamburger toggle
     const toggle = document.querySelector('.nav-toggle');
