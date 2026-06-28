@@ -17,7 +17,6 @@
       <li><a href="#work-experience">experience</a></li>
       <li><a href="#education">education</a></li>
       <li><a href="#leadership">leadership</a></li>
-      <li><a href="#projects">projects</a></li>
     </ul>
   </div>
 </nav>
