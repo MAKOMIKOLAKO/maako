@@ -31,6 +31,13 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${plexMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          data-goatcounter="https://mfangajei.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+        ></script>
+      </head>
       <body className="min-h-full flex flex-col bg-paper text-graphite">
         {children}
       </body>
