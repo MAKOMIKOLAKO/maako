@@ -188,7 +188,7 @@ export default function Scene({ reducedMotion }: { reducedMotion: boolean }) {
     <Canvas
       orthographic
       camera={{ zoom: CAMERA_ZOOM, near: 0.1, far: 20 }}
-      dpr={[1, 1.5]}
+      dpr={[1, 1.25]}
       gl={{
         antialias: true,
         alpha: true,

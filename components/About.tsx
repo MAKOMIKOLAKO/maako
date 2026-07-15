@@ -5,7 +5,7 @@ import SectionHeader from "./SectionHeader";
 
 export default function About() {
   return (
-    <section id="about" className="py-24">
+    <section id="about" className="pt-24 pb-12">
       <SectionHeader index="about" title="about" />
 
       <div className="grid grid-cols-1 md:grid-cols-[minmax(0,240px)_1fr] gap-10">

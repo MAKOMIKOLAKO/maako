@@ -33,7 +33,11 @@ export default function RobotWalker() {
   if (!enabled) return null;
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <div
+      className="fixed inset-0 z-0 pointer-events-none will-change-transform"
+      style={{ transform: "translateZ(0)", contain: "strict" }}
+      aria-hidden="true"
+    >
       <Scene reducedMotion={reducedMotion} />
     </div>
   );

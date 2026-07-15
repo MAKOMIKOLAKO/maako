@@ -100,6 +100,7 @@ body {
   background: var(--color-card);
   border: 0.5px solid var(--color-line);
   border-radius: 4px;
+  contain: layout paint style;
   transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
@@ -123,8 +124,44 @@ body {
   opacity: 1;
 }
 
+/* "this card opens for details" affordance */
+.card-hint {
+  color: var(--color-muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.log-card:hover .card-hint,
+.log-card:focus-within .card-hint {
+  color: var(--color-accent);
+  transform: translateX(2px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-modal-in {
+  animation: modal-in 0.18s ease-out;
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }

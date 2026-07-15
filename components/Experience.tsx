@@ -2,29 +2,34 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { experience } from "@/lib/content";
+import { experience, type ExperienceEntry } from "@/lib/content";
 import CornerCard from "./CornerCard";
 import LogKicker from "./LogKicker";
 import StatusLine from "./StatusLine";
 import SectionHeader from "./SectionHeader";
+import Modal from "./Modal";
 
 function LogoSlot({
   logo,
   org,
   dark,
+  expanded,
 }: {
   logo: string | null;
   org: string;
   dark?: boolean;
+  expanded?: boolean;
 }) {
+  const size = expanded ? "h-20 w-20" : "h-16 w-16";
+
   if (logo) {
     return (
       <div
-        className={`relative h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-line ${
+        className={`relative ${size} shrink-0 overflow-hidden rounded-lg border border-line ${
           dark ? "bg-graphite" : "bg-paper"
         }`}
       >
-        <Image src={logo} alt={org} fill className="object-contain p-1" />
+        <Image src={logo} alt={org} fill className="object-contain p-0.5" />
       </div>
     );
   }
@@ -37,89 +42,86 @@ function LogoSlot({
     .slice(0, 2) || org.slice(0, 2).toUpperCase();
 
   return (
-    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-card font-mono text-xs text-accent">
+    <div
+      className={`flex ${size} shrink-0 items-center justify-center rounded-lg border border-line bg-card font-mono text-xs text-accent`}
+    >
       {initials}
     </div>
   );
 }
 
-function ExperienceCard({
+function ExperienceBody({
   entry,
-  logIndex,
+  expanded = false,
 }: {
-  entry: (typeof experience)[number];
-  logIndex: string;
+  entry: ExperienceEntry;
+  expanded?: boolean;
 }) {
-  const [open, setOpen] = useState(false);
-
   return (
-    <CornerCard>
-      <LogKicker index={logIndex} />
-      <div className="flex items-start gap-3 mb-3">
-        <LogoSlot logo={entry.logo} org={entry.org} dark={entry.logoDark} />
-        <div className="min-w-0">
-          <h3 className="text-graphite font-medium text-base leading-tight">
+    <>
+      <div className={`flex items-start gap-3 ${expanded ? "gap-4 mb-5" : "mb-3"}`}>
+        <LogoSlot
+          logo={entry.logo}
+          org={entry.org}
+          dark={entry.logoDark}
+          expanded={expanded}
+        />
+        <div className="min-w-0 pt-0.5">
+          <LogKicker index={entry.logIndex} />
+          <h3
+            className={`text-graphite font-medium leading-tight ${
+              expanded ? "text-2xl mb-1" : "text-base"
+            }`}
+          >
             {entry.role}
           </h3>
-          <p className="text-secondary text-sm">{entry.org}</p>
+          <p className={`text-secondary ${expanded ? "text-base" : "text-sm"}`}>
+            {entry.org}
+          </p>
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-4">
-        <StatusLine status={entry.status} dateRange={entry.dateRange} />
-        <button
-          type="button"
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-          className="flex items-center gap-1 font-mono text-xs text-accent outline-none focus-visible:underline"
-        >
-          details
-          <svg
-            viewBox="0 0 12 12"
-            className={`h-3 w-3 transition-transform duration-200 ${
-              open ? "rotate-180" : ""
-            }`}
-            aria-hidden="true"
-          >
-            <path
-              d="M2.5 4.5L6 8l3.5-3.5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
+      <StatusLine status={entry.status} dateRange={entry.dateRange} />
 
-      <div
-        className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
-        style={{ maxHeight: open ? "480px" : "0px" }}
-      >
-        <ul className="mt-4 space-y-2 text-secondary text-sm list-disc pl-4">
+      {expanded && (
+        <ul className="mt-5 space-y-2.5 text-secondary text-sm list-disc pl-4">
           {entry.bullets.map((b, i) => (
             <li key={i}>{b}</li>
           ))}
         </ul>
-      </div>
-    </CornerCard>
+      )}
+    </>
   );
 }
 
 export default function Experience() {
+  const [active, setActive] = useState<ExperienceEntry | null>(null);
+
   return (
-    <section id="experience" className="py-24">
+    <section id="experience" className="py-12">
       <SectionHeader index="experience" title="experience" />
       <div className="space-y-4">
         {experience.map((entry) => (
-          <ExperienceCard
+          <button
             key={entry.logIndex}
-            entry={entry}
-            logIndex={entry.logIndex}
-          />
+            type="button"
+            onClick={() => setActive(entry)}
+            className="block w-full text-left outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-[4px]"
+          >
+            <CornerCard hint>
+              <ExperienceBody entry={entry} />
+            </CornerCard>
+          </button>
         ))}
       </div>
+
+      <Modal open={active !== null} onClose={() => setActive(null)}>
+        {active && (
+          <CornerCard className="p-8 sm:p-10">
+            <ExperienceBody entry={active} expanded />
+          </CornerCard>
+        )}
+      </Modal>
     </section>
   );
 }
