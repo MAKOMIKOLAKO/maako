@@ -123,42 +123,8 @@ body {
   opacity: 1;
 }
 
-/* cart-pole hero animation */
-/* pole tips first (fast, snappy) — cart reacts a beat later (slower catch-up) */
-@keyframes pole-correct {
-  0% { transform: rotate(-9deg); }
-  12% { transform: rotate(11deg); }
-  34% { transform: rotate(-13deg); }
-  55% { transform: rotate(8deg); }
-  75% { transform: rotate(-6deg); }
-  100% { transform: rotate(-9deg); }
-}
-
-@keyframes cart-drift {
-  0% { transform: translateX(-56px); }
-  24% { transform: translateX(34px); }
-  46% { transform: translateX(-46px); }
-  67% { transform: translateX(48px); }
-  87% { transform: translateX(-28px); }
-  100% { transform: translateX(-56px); }
-}
-
-.pole-anim {
-  animation: pole-correct 3.6s cubic-bezier(0.22, 0, 0.35, 1) infinite;
-  transform-origin: bottom center;
-}
-
-.cart-anim {
-  animation: cart-drift 3.6s cubic-bezier(0.16, 0.6, 0.3, 1) infinite;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .cart-anim,
-  .pole-anim {
-    animation: none;
   }
 }
