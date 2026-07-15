@@ -9,40 +9,11 @@ export const bio = {
     { label: "base", value: "atlanta, ga" },
   ],
   paragraphs: [
-    "I'm drawn to the problem of getting physical systems to act well under uncertainty — sensing a noisy signal, closing a control loop, learning a policy that holds up outside the lab. Most of my research lives at that intersection: building the sensing hardware and embedded pipelines that let a learning system act on a body, human or robotic, in real time.",
-    "Concretely, that's meant designing and fabricating wearable hardware for a hip-knee exoskeleton platform, and training temporal models on multimodal biosignals to classify physiological state — the same throughline of sense, process, learn, act, just applied first to human health because that's where I found the research. I'm a Computer Engineering student at Georgia Tech pursuing Robotics and Signal & Information Processing threads.",
+    "I'm drawn to the problem of getting systems to perform under uncertainty — sensing a noisy signal, closing a control loop, learning a policy that holds up outside the lab. Most of my research lives at that intersection: building the sensing hardware and embedded pipelines that let a learning system act in real time.",
+    "Concretely, that's meant designing and fabricating wearable hardware for a hip-knee exoskeleton platform, and training temporal models on multimodal biosignals to classify physiological state — the same throughline of sense, process, learn, act. I'm an Electrical Engineering student at Georgia Tech pursuing Robotics and Signal & Information Processing threads.",
     "Growing up between the U.S., Switzerland, and Ghana shaped how I think about community and responsibility, and it's part of why I care about building systems that actually work for the people using them, not just in a demo.",
   ],
 };
-
-export const currentWork = [
-  {
-    logIndex: "log_003",
-    title: "TCN — levodopa state classification",
-    org: "inan lab",
-    description: "Multimodal biosignal model — EEG, ECG, respiratory",
-    status: "active" as Status,
-    statusDetail: "pytorch / grad-cam",
-    dateRange: "2025.09 —> present",
-    detail: "also: SCG beat quality — accepted, Nature Sensors",
-    waveform: "bio" as const,
-    fullDetail:
-      "Training a Temporal Convolutional Network in PyTorch on multimodal physiological data (EEG, ECG, respiratory) from Parkinson's patients to classify levodopa usage state; applying Grad-CAM analysis to identify predictive biomarkers. Developed a classical ML pipeline (Random Forest, XGBoost, KNN, Logistic Regression, SVM) to classify SCG beat quality; k-fold and LOSO validation; contributing author on accepted Nature Sensors paper. Also assisted with PCB redesign for a wrist-worn stress/vagus-nerve-modulation device.",
-  },
-  {
-    logIndex: "log_004",
-    title: "Hip-knee exoskeleton platform",
-    org: "epic lab",
-    description: "Sensor hardware, PCB layout, embedded enclosures",
-    status: "active" as Status,
-    statusDetail: "solidworks / easyeda",
-    dateRange: "2026.01 —> present",
-    detail: "human subjects testing — biomechanical data collection",
-    waveform: "control" as const,
-    fullDetail:
-      "Designing and fabricating sensor hardware, structural enclosures, and PCB layouts for a hip-knee lower-limb exoskeleton research platform, and assisting with biomechanical data collection sessions involving instrumented human subjects.",
-  },
-];
 
 export type ExperienceEntry = {
   logIndex: string;
@@ -58,9 +29,9 @@ export type ExperienceEntry = {
 export const experience: ExperienceEntry[] = [
   {
     logIndex: "log_005",
-    role: "incoming learning assistant",
+    role: "learning assistant",
     org: "Georgia Tech Tutoring and Learning Enrichment",
-    logo: null,
+    logo: "/logos/gt-tutoring.jpg",
     status: "current",
     dateRange: "2026.03 —> present",
     bullets: [
@@ -76,11 +47,11 @@ export const experience: ExperienceEntry[] = [
     status: "current",
     dateRange: "2026.01 —> present",
     bullets: [
-      "Fabricated custom IMU sensor cables via soldering and mechanical assembly to establish a dedicated data collection kit, eliminating cross-team hardware contention across shared lab resources.",
-      "Designed and 3D printed structural wearable backpack components in resin (Formlabs SLA) using SolidWorks and Cura, improving durability over prior prototypes for field data collection use.",
-      "Redesigned battery and Raspberry Pi enclosure in SolidWorks with focus on weight reduction and structural durability; fabricated final version in Formlabs resin.",
-      "Assisted with biomechanical data collection sessions involving external human subjects instrumented with a hip-knee lower-limb exoskeleton.",
-      "Redesigning power system breaker board PCB layout in EasyEDA for wearable exoskeleton platform, targeting improved reliability and form factor for embedded deployment.",
+      "Redesigning power system breaker board PCB layout in EasyEDA for a wearable exoskeleton platform.",
+      "Redesigned battery and Raspberry Pi enclosure for the exoskeleton backpack system; fabricated final version using SLA printing.",
+      "Fabricated custom IMU sensor cables (soldering + mechanical cutting) to establish a dedicated data collection kit.",
+      "Assisted with motion capture and biomechanics data collection sessions with external human subjects using a hip-knee exoskeleton platform under IRB-compliant experimental protocols.",
+      "3D printed structural backpack components in resin to improve durability over prior PLA/FDM parts.",
     ],
   },
   {
@@ -92,16 +63,18 @@ export const experience: ExperienceEntry[] = [
     status: "current",
     dateRange: "2025.09 —> present",
     bullets: [
-      "Developing and training a TCN in PyTorch on multimodal physiological data (EEG, ECG, respiratory) from Parkinson's disease patients to classify levodopa usage state; applying Grad-CAM analysis to identify predictive biomarkers.",
-      "Developed a classical ML pipeline to classify SCG beat quality for automated biosignal quality assessment using Random Forest, XGBoost, KNN, Logistic Regression, and SVM; applied k-fold and LOSO validation — contributing author on accepted Nature Sensors paper.",
-      "Assisted with PCB redesign initiative for a wrist-worn physiological sensing device targeting stress identification and vagus nerve modulation, mapping component placement strategy across board revisions integrating new temperature and PPG sensing modalities.",
+      "Built and benchmarked a classical ML pipeline (Random Forest, XGBoost, KNN, Logistic Regression, SVM) for SCG beat quality classification; submitted as co-author to ACM Health.",
+      "Designed and implemented a C port of a Kalman-filter based methodology to identify AO and AC events (HIKAF), including a scalar Kalman filter and SCG beat segmentation; submitted as co-author to IEEE Sensors 2026.",
+      "Led PCB redesign initiative for a physiological sensing device targeting stress identification and vagus nerve modulation, integrating new sensing modalities (temperature sensor, secondary PPG).",
+      "Developing a multimodal temporal convolutional network (TCN) for Parkinson's levodopa state detection, using a late-fusion multi-encoder design to combine heterogeneous biosignal modalities.",
+      "Implementing modality-level interpretability methods to identify which biosignal channels drive model predictions.",
     ],
   },
   {
     logIndex: "log_008",
     role: "treasurer",
     org: "WEAR @ GT (Wearable Exoskeletons and Assistive Robotics @ Georgia Tech)",
-    logo: null,
+    logo: "/logos/wearlogo.jpg",
     status: "current",
     dateRange: "2026.01 —> present",
     bullets: [
@@ -112,7 +85,7 @@ export const experience: ExperienceEntry[] = [
     logIndex: "log_009",
     role: "peer instructor",
     org: "The Hive Makerspace",
-    logo: null,
+    logo: "/logos/hive.png",
     status: "current",
     dateRange: "2026.01 —> present",
     bullets: [
@@ -136,7 +109,7 @@ export const education: EducationEntry[] = [
     degree: "B.S. Electrical Engineering, minor in Computer Science",
     school: "Georgia Institute of Technology",
     logo: "/logos/gt.png",
-    status: "expected 2029.05",
+    status: "expected 2028.05",
     detailLines: [
       "threads: Robotics, Signal & Information Processing (pursuing)",
       "distinctions: Stamps President's Scholars Program · Ron Brown Captain · Faculty Honors (x1)",
@@ -170,22 +143,38 @@ export type ProjectEntry = {
 
 export const projects: ProjectEntry[] = [
   {
+    title: "Standing-Balance Control Policy for Humanoid Robot",
+    description:
+      "Custom reinforcement learning environment for humanoid balance recovery, training a PPO policy on the Berkeley Humanoid robot model.",
+    status: "dev",
+    dateRange: "2026.06 —> present",
+    stack: ["MuJoCo Playground", "Brax", "PPO", "reinforcement learning"],
+    link: null,
+    linkLabel: "in progress",
+  },
+  {
+    title: "ESP32 Multi-Sensor Real-Time Data Logger",
+    description:
+      "Embedded firmware integrating time-of-flight and PPG sensors over I2C, with a real-time signal processing pipeline for heart rate extraction.",
+    status: "dev",
+    dateRange: "2026.06 —> present",
+    stack: ["C", "ESP-IDF", "FreeRTOS", "I2C", "VL53L0X", "MAX30102"],
+    link: null,
+    linkLabel: "in progress",
+  },
+  {
     title: "Corpus",
     description:
-      "Collaborative research platform for organizing, annotating, and semantically searching academic sources in real time.",
-    status: "live",
-    dateRange: "2025 —> present",
+      "Full-stack reading tracker web app with keyword search and Gemini-powered metadata extraction, deployed on Vercel.",
+    status: "active",
+    dateRange: "2026.03 —> present",
     stack: [
       "Next.js 14",
       "TypeScript",
-      "PostgreSQL (Neon)",
+      "PostgreSQL",
       "Prisma",
-      "pgvector",
       "Stripe",
-      "NextAuth",
-      "Gemini Flash",
-      "OpenAI Embeddings",
-      "Chrome Extension",
+      "Gemini",
     ],
     link: "https://usecorpus.app",
     linkLabel: "usecorpus.app",
@@ -205,6 +194,7 @@ export const projects: ProjectEntry[] = [
 export const heroLinks = [
   { label: "resume", href: "/resume.pdf" },
   { label: "linkedin", href: "https://www.linkedin.com/in/mfangajei" },
+  { label: "github", href: "https://github.com/MAKOMIKOLAKO" }
 ];
 
 export const footerLinks = [
@@ -216,7 +206,6 @@ export const footerLinks = [
 export const sectionIds = [
   "hero",
   "about",
-  "current-work",
   "experience",
   "education",
   "projects",
