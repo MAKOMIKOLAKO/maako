@@ -339,8 +339,8 @@ const CP_POLE_MASS_LENGTH = CP_POLE_MASS * CP_HALF_POLE_LENGTH;
 
 const CP_K_THETA = 20;
 const CP_K_THETA_DOT = 5;
-const CP_K_X = 0.1;
-const CP_K_X_DOT = 0.2;
+const CP_K_X = 0.6;
+const CP_K_X_DOT = 0.9;
 const CP_FORCE_CLAMP = 25;
 
 const CP_PX_PER_UNIT = 36;
