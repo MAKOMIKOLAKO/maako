@@ -7,10 +7,12 @@ type Mode = "double" | "cart";
 
 export default function Hero() {
   const [mode, setMode] = useState<Mode>("double");
-  const [episode, setEpisode] = useState(412);
-  const [reward, setReward] = useState(104);
+  const [episode, setEpisode] = useState(0);
+  const [reward, setReward] = useState(0);
   const [angleErr, setAngleErr] = useState(0.6);
   const [perturbation, setPerturbation] = useState(1);
+  const angleErrRef = useRef(angleErr);
+  angleErrRef.current = angleErr;
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
@@ -18,12 +20,21 @@ export default function Hero() {
     ).matches;
     if (prefersReduced) return;
 
+    // reward is a per-episode cumulative signal, like a real RL training
+    // curve: it climbs fastest when the tracked angle stays near zero and
+    // resets to 0 at the start of each new episode, rather than climbing
+    // forever regardless of how the policy is actually doing.
+    const REWARD_ANGLE_THRESHOLD_DEG = 12;
+
     const episodeTimer = setInterval(() => {
       setEpisode((e) => e + 1);
+      setReward(0);
     }, 4000);
 
     const rewardTimer = setInterval(() => {
-      setReward((r) => r + 1 + Math.random() * 0.4);
+      const normalizedErr = Math.min(1, angleErrRef.current / REWARD_ANGLE_THRESHOLD_DEG);
+      const stepReward = Math.max(0, 1 - normalizedErr) + Math.random() * 0.15;
+      setReward((r) => r + stepReward);
     }, 350);
 
     return () => {
