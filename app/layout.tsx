@@ -34,8 +34,30 @@ export default function RootLayout({
       <head>
         <script
           data-goatcounter="https://mfangajei.goatcounter.com/count"
+          data-goatcounter-settings='{"no_onload": true}'
           async
           src="//gc.zgo.at/count.js"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function () {
+              function track() {
+                if (window.goatcounter && window.goatcounter.count) {
+                  window.goatcounter.count();
+                }
+                var params = new URLSearchParams(window.location.search);
+                var source = params.get("utm_source");
+                if (source === "linkedin" || source === "resume") {
+                  window.history.replaceState(null, "", window.location.pathname + window.location.hash);
+                }
+              }
+              if (document.readyState === "complete") {
+                track();
+              } else {
+                window.addEventListener("load", track);
+              }
+            })();`,
+          }}
         ></script>
       </head>
       <body className="min-h-full flex flex-col bg-paper text-graphite">
