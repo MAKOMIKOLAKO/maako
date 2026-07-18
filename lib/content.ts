@@ -143,6 +143,16 @@ export type ProjectEntry = {
 
 export const projects: ProjectEntry[] = [
   {
+    title: "GT Campus Opportunity Finder",
+    description:
+      "Searchable directory of Georgia Tech VIP teams, research labs, and technical student orgs, with scraper pipelines, LLM-based classification, and a crowdsourced submission + review queue.",
+    status: "dev",
+    dateRange: "2026.07 —> present",
+    stack: ["Postgres", "Playwright", "LLM classification", "full-text search"],
+    link: null,
+    linkLabel: "in progress",
+  },
+  {
     title: "Standing-Balance Control Policy for Humanoid Robot",
     description:
       "Custom reinforcement learning environment for humanoid balance recovery, training a PPO policy on the Berkeley Humanoid robot model.",
