@@ -149,7 +149,7 @@ export const projects: ProjectEntry[] = [
     status: "dev",
     dateRange: "2026.07 —> present",
     stack: ["Postgres", "Playwright", "LLM classification", "full-text search"],
-    link: null,
+    link: "https://gt-opportunities.vercel.app/",
     linkLabel: "in progress",
   },
   {
@@ -159,7 +159,7 @@ export const projects: ProjectEntry[] = [
     status: "dev",
     dateRange: "2026.06 —> present",
     stack: ["MuJoCo Playground", "Brax", "PPO", "reinforcement learning"],
-    link: null,
+    link: "https://github.com/MAKOMIKOLAKO/humanoid_balance",
     linkLabel: "in progress",
   },
   {
@@ -169,7 +169,7 @@ export const projects: ProjectEntry[] = [
     status: "dev",
     dateRange: "2026.06 —> present",
     stack: ["C", "ESP-IDF", "FreeRTOS", "I2C", "VL53L0X", "MAX30102"],
-    link: null,
+    link: "https://github.com/MAKOMIKOLAKO/esp32-sensor-integration",
     linkLabel: "in progress",
   },
   {
@@ -187,7 +187,7 @@ export const projects: ProjectEntry[] = [
       "Gemini",
     ],
     link: "https://usecorpus.app",
-    linkLabel: "usecorpus.app",
+    linkLabel: "in progress",
   },
   {
     title: "drift.",
