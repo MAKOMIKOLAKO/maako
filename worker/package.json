@@ -1,0 +1,21 @@
+{
+  "name": "maako-visits-worker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "migrate:local": "wrangler d1 migrations apply maako-visits --local",
+    "migrate:remote": "wrangler d1 migrations apply maako-visits --remote"
+  },
+  "dependencies": {
+    "isbot": "^5",
+    "ua-parser-js": "^1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5",
+    "@types/ua-parser-js": "^0.7",
+    "typescript": "^5",
+    "wrangler": "^4.112.0"
+  }
+}

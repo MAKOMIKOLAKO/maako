@@ -50,6 +50,17 @@ export default function RootLayout({
                 if (source === "linkedin" || source === "resume") {
                   window.history.replaceState(null, "", window.location.pathname + window.location.hash);
                 }
+                // Fire-and-forget first-party visit log (see /privacy for what this records).
+                fetch("/api/visit", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  keepalive: true,
+                  body: JSON.stringify({
+                    path: window.location.pathname,
+                    referrer: document.referrer || null,
+                    query: window.location.search ? window.location.search.slice(1) : null,
+                  }),
+                }).catch(function () {});
               }
               if (document.readyState === "complete") {
                 track();
