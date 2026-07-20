@@ -1,0 +1,13 @@
+name = "maako-visits"
+main = "src/index.ts"
+compatibility_date = "2026-07-20"
+
+routes = [
+  { pattern = "maako.dev/api/*", zone_name = "maako.dev" },
+  { pattern = "maako.dev/admin/*", zone_name = "maako.dev" }
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "maako-visits"
+database_id = "f0a32e02-37d2-4239-8b25-b064b72fcf61"
