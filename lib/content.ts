@@ -212,7 +212,6 @@ export const projects: ProjectEntry[] = [
 ];
 
 export const heroLinks = [
-  { label: "resume", href: "/resume.pdf" },
   { label: "linkedin", href: "https://www.linkedin.com/in/mfangajei" },
   { label: "github", href: "https://github.com/MAKOMIKOLAKO" },
   { label: "google scholar", href: "https://scholar.google.com/citations?user=-2sBsfMAAAAJ&hl=en"}
