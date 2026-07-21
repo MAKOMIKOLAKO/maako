@@ -1,9 +1,24 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { bio } from "@/lib/content";
 import CornerCard from "./CornerCard";
 import SectionHeader from "./SectionHeader";
 
 export default function About() {
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const photo = bio.photos[photoIndex];
+  const hasMultiplePhotos = bio.photos.length > 1;
+
+  function showPrev() {
+    setPhotoIndex((i) => (i - 1 + bio.photos.length) % bio.photos.length);
+  }
+
+  function showNext() {
+    setPhotoIndex((i) => (i + 1) % bio.photos.length);
+  }
+
   return (
     <section id="about" className="pt-24 pb-12">
       <SectionHeader index="about" title="about" />
@@ -13,17 +28,47 @@ export default function About() {
           <CornerCard className="p-2">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2px]">
               <Image
-                src="/headshot.jpg"
+                key={photo.src}
+                src={photo.src}
                 alt="Maako Fangajei"
                 fill
                 className="object-cover grayscale-[15%]"
                 sizes="240px"
               />
+
+              {hasMultiplePhotos && (
+                <>
+                  <button
+                    type="button"
+                    onClick={showPrev}
+                    aria-label="previous photo"
+                    className="absolute left-1 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-paper/70 font-mono text-xs text-secondary hover:text-accent focus-visible:text-accent outline-none"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    onClick={showNext}
+                    aria-label="next photo"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-paper/70 font-mono text-xs text-secondary hover:text-accent focus-visible:text-accent outline-none"
+                  >
+                    ›
+                  </button>
+                  <div className="absolute bottom-1.5 left-1/2 flex -translate-x-1/2 gap-1">
+                    {bio.photos.map((p, i) => (
+                      <span
+                        key={p.src}
+                        className={`h-1 w-1 rounded-full ${
+                          i === photoIndex ? "bg-accent" : "bg-paper/70"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           </CornerCard>
-          <p className="mt-2 font-mono text-xs text-muted">
-            {bio.photoCaption}
-          </p>
+          <p className="mt-2 font-mono text-xs text-muted">{photo.caption}</p>
         </div>
 
         <div className="md:pl-10 md:border-l md:border-line">

@@ -69,7 +69,7 @@ function EducationBody({
       </div>
 
       <ul
-        className={`font-mono text-muted ${
+        className={`font-mono text-[#8f8c81] ${
           expanded ? "space-y-2.5 text-sm" : "space-y-1 text-xs"
         }`}
       >

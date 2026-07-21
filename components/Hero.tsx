@@ -61,7 +61,7 @@ export default function Hero() {
           maako fangajei
         </h1>
         <p className="mt-2 text-secondary text-base sm:text-lg">
-          robotics · reinforcement learning · embedded ml
+          machine learning · robot learning  · embedded systems
         </p>
       </div>
 

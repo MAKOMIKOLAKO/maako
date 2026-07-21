@@ -12,7 +12,7 @@ export const bio = {
     "I'm interested in machine intelligence broadly — how systems learn representations, make predictions, and act — with a particular pull toward reinforcement learning techniques, and toward applying learning techniques to complex problems involving multimodal data, locomotion and manipulation under uncertainty.",
     "I'm an Electrical Engineering student at Georgia Tech pursuing Robotics and Signal & Information Processing threads, with a minor in Computing & Intelligence.",
     "Growing up between the U.S., Switzerland, and Ghana shaped how I think about community and responsibility, and it's part of why I care about building systems that actually work for the people using them, not just in a demo.",
-    "Outside the lab, I play football (not soccer), snowboard, travel, and "
+    "Outside the lab, I play football (not soccer), snowboard, travel, and am currently learning videography / editing."
   ],
 };
 
