@@ -94,14 +94,20 @@ function ExperienceBody({
   );
 }
 
-export default function Experience() {
+export default function Experience({
+  id = "experience",
+  entries = experience,
+}: {
+  id?: string;
+  entries?: ExperienceEntry[];
+}) {
   const [active, setActive] = useState<ExperienceEntry | null>(null);
 
   return (
-    <section id="experience" className="py-12">
-      <SectionHeader index="experience" title="experience" />
+    <section id={id} className="py-12">
+      <SectionHeader index={id} title={id} />
       <div className="space-y-4">
-        {experience.map((entry) => (
+        {entries.map((entry) => (
           <button
             key={entry.logIndex}
             type="button"

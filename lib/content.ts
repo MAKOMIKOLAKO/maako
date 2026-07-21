@@ -1,17 +1,18 @@
 export type Status = "live" | "active" | "dev" | "current" | "closed";
 
 export const bio = {
-  photoCaption: "img_003 · headshot.jpg",
+  photos: [{ src: "/headshot.jpg", caption: "img_003 · headshot.jpg" }],
   stats: [
-    { label: "focus", value: "robotics / reinforcement learning" },
-    { label: "labs", value: "2 active" },
+    { label: "focus", value: "machine intelligence" },
+    { label: "labs", value: "inan lab, epic lab" },
     { label: "gpa", value: "4.00" },
     { label: "base", value: "atlanta, ga" },
   ],
   paragraphs: [
-    "I'm drawn to the problem of getting systems to perform under uncertainty — sensing a noisy signal, closing a control loop, learning a policy that holds up outside the lab. Most of my research lives at that intersection: building the sensing hardware and embedded pipelines that let a learning system act in real time.",
-    "Concretely, that's meant designing and fabricating wearable hardware for a hip-knee exoskeleton platform, and training temporal models on multimodal biosignals to classify physiological state — the same throughline of sense, process, learn, act. I'm an Electrical Engineering student at Georgia Tech pursuing Robotics and Signal & Information Processing threads.",
+    "I'm interested in machine intelligence broadly — how systems learn representations, make predictions, and act — with a particular pull toward reinforcement learning techniques, and toward applying learning techniques to complex problems involving multimodal data, locomotion and manipulation under uncertainty.",
+    "I'm an Electrical Engineering student at Georgia Tech pursuing Robotics and Signal & Information Processing threads, with a minor in Computing & Intelligence.",
     "Growing up between the U.S., Switzerland, and Ghana shaped how I think about community and responsibility, and it's part of why I care about building systems that actually work for the people using them, not just in a demo.",
+    "Outside the lab, I play football (not soccer), snowboard, travel, and "
   ],
 };
 
@@ -29,14 +30,13 @@ export type ExperienceEntry = {
 export const experience: ExperienceEntry[] = [
   {
     logIndex: "log_005",
-    role: "learning assistant",
-    org: "Georgia Tech Tutoring and Learning Enrichment",
-    logo: "/logos/gt-tutoring.jpg",
+    role: "machine learning engineer",
+    org: "Georgia Tech Research Institute",
+    logo: "/logos/gtri.jpg",
     status: "current",
-    dateRange: "2026.03 —> present",
+    dateRange: "2026.08 —> present",
     bullets: [
-      "Facilitate problem-solving and conceptual understanding in STEM courses through office hours and small-group instruction.",
-      "Support course coordination and communication between students and instructional staff.",
+      "incoming machine learning engineer for gtri arcaid (advanced research in computing & artificial intelligence).",
     ],
   },
   {
@@ -70,8 +70,23 @@ export const experience: ExperienceEntry[] = [
       "Implementing modality-level interpretability methods to identify which biosignal channels drive model predictions.",
     ],
   },
+];
+
+export const involvements: ExperienceEntry[] = [
   {
     logIndex: "log_008",
+    role: "learning assistant",
+    org: "Georgia Tech Tutoring and Learning Enrichment",
+    logo: "/logos/gt-tutoring.jpg",
+    status: "current",
+    dateRange: "2026.03 —> present",
+    bullets: [
+      "Facilitate problem-solving and conceptual understanding in STEM courses through office hours and small-group instruction.",
+      "Support course coordination and communication between students and instructional staff.",
+    ],
+  },
+  {
+    logIndex: "log_009",
     role: "treasurer",
     org: "WEAR @ GT (Wearable Exoskeletons and Assistive Robotics @ Georgia Tech)",
     logo: "/logos/wearlogo.jpg",
@@ -82,7 +97,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    logIndex: "log_009",
+    logIndex: "log_010",
     role: "peer instructor",
     org: "The Hive Makerspace",
     logo: "/logos/hive.png",
@@ -105,7 +120,7 @@ export type EducationEntry = {
 
 export const education: EducationEntry[] = [
   {
-    logIndex: "log_010",
+    logIndex: "log_011",
     degree: "B.S. Electrical Engineering, minor in Computer Science",
     school: "Georgia Institute of Technology",
     logo: "/logos/gt.png",
@@ -118,7 +133,7 @@ export const education: EducationEntry[] = [
     ],
   },
   {
-    logIndex: "log_011",
+    logIndex: "log_012",
     degree: "Bilingual IB Diploma",
     school: "International School of Lausanne",
     logo: "/logos/isl.jpg",
@@ -227,6 +242,7 @@ export const sectionIds = [
   "hero",
   "about",
   "experience",
+  "involvements",
   "education",
   "projects",
 ] as const;
