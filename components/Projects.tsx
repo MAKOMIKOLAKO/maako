@@ -15,7 +15,7 @@ function ProjectBody({
   expanded?: boolean;
 }) {
   return (
-    <>
+    <div className={expanded ? undefined : "flex h-full flex-col"}>
       <h3
         className={`text-graphite font-medium mb-2 ${
           expanded ? "text-2xl" : "text-base mb-1.5 pr-14"
@@ -25,13 +25,13 @@ function ProjectBody({
       </h3>
       <p
         className={`text-secondary mb-4 ${
-          expanded ? "text-base leading-relaxed" : "text-sm"
+          expanded ? "text-base leading-relaxed" : "text-sm line-clamp-3"
         }`}
       >
         {project.description}
       </p>
 
-      <div className="flex flex-wrap gap-1.5 mb-4">
+      <div className={`flex flex-wrap gap-1.5 mb-4 ${expanded ? "" : "mt-auto"}`}>
         {project.stack.map((tag) => (
           <span
             key={tag}
@@ -63,7 +63,7 @@ function ProjectBody({
           </span>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -80,9 +80,9 @@ export default function Projects() {
             key={project.title}
             type="button"
             onClick={() => setActive(project)}
-            className="text-left outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-[4px]"
+            className="text-left outline-none focus-visible:ring-1 focus-visible:ring-accent rounded-[4px] h-64"
           >
-            <CornerCard hint>
+            <CornerCard hint className="h-full">
               <ProjectBody project={project} />
             </CornerCard>
           </button>

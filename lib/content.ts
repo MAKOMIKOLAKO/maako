@@ -143,10 +143,20 @@ export type ProjectEntry = {
 
 export const projects: ProjectEntry[] = [
   {
+    title: "Journal Club Coordinator",
+    description:
+      "A simple coordination tool for live research reading groups. Invite your team, pull in papers from arXiv, vote on what's next, and schedule your meetings — all in one place.",
+    status: "active",
+    dateRange: "2026.07 —> present",
+    stack: ["Next.js", "Typescript", "Prisma", "PostgreSQL", "Auth.js"],
+    link: "https://journalclub.vercel.app/",
+    linkLabel: "in progress",
+  },
+  {
     title: "GT Campus Opportunity Finder",
     description:
       "Searchable directory of Georgia Tech VIP teams, research labs, and technical student orgs, with scraper pipelines, LLM-based classification, and a crowdsourced submission + review queue.",
-    status: "dev",
+    status: "active",
     dateRange: "2026.07 —> present",
     stack: ["Postgres", "Playwright", "LLM classification", "full-text search"],
     link: "https://gt-opportunities.vercel.app/",
@@ -170,7 +180,7 @@ export const projects: ProjectEntry[] = [
     dateRange: "2026.06 —> present",
     stack: ["C", "ESP-IDF", "FreeRTOS", "I2C", "VL53L0X", "MAX30102"],
     link: "https://github.com/MAKOMIKOLAKO/esp32-sensor-integration",
-    linkLabel: "in progress",
+    linkLabel: "repo",
   },
   {
     title: "Corpus",
@@ -209,7 +219,7 @@ export const heroLinks = [
 ];
 
 export const footerLinks = [
-  { label: "email", href: "mailto:reachmaako@gmail.com" },
+  { label: "email", href: "mailto:maako.fangajei@gmail.com" },
   { label: "linkedin", href: "https://www.linkedin.com/in/mfangajei" },
   { label: "github", href: "https://github.com/MAKOMIKOLAKO" },
 ];
