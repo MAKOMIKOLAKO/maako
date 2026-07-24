@@ -28,7 +28,7 @@ export type ExperienceEntry = {
 };
 
 export const experience: ExperienceEntry[] = [
-  {
+  /*{
     logIndex: "log_005",
     role: "machine learning engineer",
     org: "Georgia Tech Research Institute",
@@ -38,7 +38,7 @@ export const experience: ExperienceEntry[] = [
     bullets: [
       "incoming machine learning engineer for gtri arcaid (advanced research in computing & artificial intelligence).",
     ],
-  },
+  },*/
   {
     logIndex: "log_006",
     role: "undergraduate research assistant",
