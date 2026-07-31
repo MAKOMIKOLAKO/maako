@@ -234,8 +234,8 @@ export const heroLinks = [
 
 export const footerLinks = [
   { label: "email", href: "mailto:maako.fangajei@gmail.com" },
+  { label: "instagram", href: "https://www.instagram.com/makomikolako/"},
   { label: "linkedin", href: "https://www.linkedin.com/in/mfangajei" },
-  { label: "github", href: "https://github.com/MAKOMIKOLAKO" },
 ];
 
 export const sectionIds = [

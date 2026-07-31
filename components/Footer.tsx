@@ -19,6 +19,9 @@ export default function Footer() {
           </span>
         ))}
       </p>
+      <p className="mt-3 font-mono text-xs text-muted">
+        please reach out! always happy to connect / meet / give advice. if i know you through a mutual or have non-professional inquiries just dm me on insta :)
+      </p>
     </footer>
   );
 }
