@@ -10,7 +10,7 @@ export const bio = {
   ],
   paragraphs: [
     "I'm interested in machine intelligence broadly — how systems learn representations, make predictions, and act — with a particular pull toward reinforcement learning techniques, and toward applying learning techniques to complex problems involving multimodal data, locomotion and manipulation under uncertainty.",
-    "I'm an Electrical Engineering student at Georgia Tech pursuing Robotics and Signal & Information Processing threads, with a minor in Computing & Intelligence.",
+    "I'm a Computer Engineering student at Georgia Tech pursuing Robotics and Distributed System & Software Design threads.",
     "Growing up between the U.S., Switzerland, and Ghana shaped how I think about community and responsibility, and it's part of why I care about building systems that actually work for the people using them, not just in a demo.",
     "Outside the lab, I play football (not soccer), snowboard, travel, and am currently learning videography / editing."
   ],
@@ -28,7 +28,7 @@ export type ExperienceEntry = {
 };
 
 export const experience: ExperienceEntry[] = [
-  /*{
+  {
     logIndex: "log_005",
     role: "machine learning engineer",
     org: "Georgia Tech Research Institute",
@@ -36,9 +36,9 @@ export const experience: ExperienceEntry[] = [
     status: "current",
     dateRange: "2026.08 —> present",
     bullets: [
-      "incoming machine learning engineer for gtri arcaid (advanced research in computing & artificial intelligence).",
+      "machine learning engineer for gtri arcaid (advanced research in computing & artificial intelligence).",
     ],
-  },*/
+  },
   {
     logIndex: "log_006",
     role: "undergraduate research assistant",
@@ -121,12 +121,12 @@ export type EducationEntry = {
 export const education: EducationEntry[] = [
   {
     logIndex: "log_011",
-    degree: "B.S. Electrical Engineering, minor in Computer Science",
+    degree: "B.S. Computer Engineering",
     school: "Georgia Institute of Technology",
     logo: "/logos/gt.png",
     status: "expected 2028.05",
     detailLines: [
-      "threads: Robotics, Signal & Information Processing (pursuing)",
+      "threads: Robotics & Autonomous Systems, Distributed System & Software Design",
       "distinctions: Stamps President's Scholars Program · Ron Brown Captain · Faculty Honors (x1)",
       "gpa: 4.00",
       "coursework: Digital System Design (ECE 2020) · Linear Algebra (MATH 1554) · Principles of Physics II (PHYS 2212) · Intro to Object-Oriented Programming (CS 1331) · Data Structures & Algorithms (CS 1332)",
