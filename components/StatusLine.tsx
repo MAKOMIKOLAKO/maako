@@ -16,7 +16,7 @@ export default function StatusLine({
   suffix,
 }: {
   status: Status;
-  dateRange: string;
+  dateRange?: string;
   suffix?: string;
 }) {
   const isLive = LIVE_STATUSES.includes(status);
@@ -29,7 +29,8 @@ export default function StatusLine({
         aria-hidden="true"
       />
       <span>
-        {STATUS_TEXT[status]} · {dateRange}
+        {STATUS_TEXT[status]}
+        {dateRange ? ` · ${dateRange}` : ""}
         {suffix ? ` · ${suffix}` : ""}
       </span>
     </div>

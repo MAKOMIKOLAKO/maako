@@ -75,25 +75,25 @@ export const experience: ExperienceEntry[] = [
 export const involvements: ExperienceEntry[] = [
   {
     logIndex: "log_008",
-    role: "learning assistant",
-    org: "Georgia Tech Tutoring and Learning Enrichment",
-    logo: "/logos/gt-tutoring.jpg",
-    status: "current",
-    dateRange: "2026.03 —> present",
-    bullets: [
-      "Facilitate problem-solving and conceptual understanding in STEM courses through office hours and small-group instruction.",
-      "Support course coordination and communication between students and instructional staff.",
-    ],
-  },
-  {
-    logIndex: "log_009",
-    role: "treasurer",
+    role: "founding treasurer",
     org: "WEAR @ GT (Wearable Exoskeletons and Assistive Robotics @ Georgia Tech)",
     logo: "/logos/wearlogo.jpg",
     status: "current",
     dateRange: "2026.01 —> present",
     bullets: [
       "Manage club finances, budget planning, and funding request review.",
+    ],
+  },
+  {
+    logIndex: "log_009",
+    role: "treasurer",
+    org: "Delta Chi Fraternity",
+    logo: "/logos/deltachi.jpg",
+    status: "current",
+    dateRange: "2026.08 —> present",
+    bullets: [
+      "Managed $300K+ annual budget for 100+ member fraternity chapter, tracking dues, expenses, and financial reporting",
+      "Redesigned reimbursement system, increasing processing throughput 75% through new digital forms and backend workflow"
     ],
   },
   {
@@ -107,6 +107,18 @@ export const involvements: ExperienceEntry[] = [
       "Front-desk operations, 3D printing support and troubleshooting.",
     ],
   },
+  {
+    logIndex: "log_011",
+    role: "learning assistant",
+    org: "Georgia Tech Tutoring and Learning Enrichment",
+    logo: "/logos/gt-tutoring.jpg",
+    status: "current",
+    dateRange: "2026.03 —> present",
+    bullets: [
+      "Facilitate problem-solving and conceptual understanding in STEM courses through office hours and small-group instruction.",
+      "Support course coordination and communication between students and instructional staff.",
+    ],
+  }
 ];
 
 export type EducationEntry = {
@@ -120,7 +132,7 @@ export type EducationEntry = {
 
 export const education: EducationEntry[] = [
   {
-    logIndex: "log_011",
+    logIndex: "log_012",
     degree: "B.S. Computer Engineering",
     school: "Georgia Institute of Technology",
     logo: "/logos/gt.png",
@@ -133,7 +145,7 @@ export const education: EducationEntry[] = [
     ],
   },
   {
-    logIndex: "log_012",
+    logIndex: "log_013",
     degree: "Bilingual IB Diploma",
     school: "International School of Lausanne",
     logo: "/logos/isl.jpg",
@@ -150,7 +162,6 @@ export type ProjectEntry = {
   title: string;
   description: string;
   status: Status;
-  dateRange: string;
   stack: string[];
   link: string | null;
   linkLabel: string;
@@ -158,33 +169,12 @@ export type ProjectEntry = {
 
 export const projects: ProjectEntry[] = [
   {
-    title: "Journal Club Coordinator",
-    description:
-      "A simple coordination tool for live research reading groups. Invite your team, pull in papers from arXiv, vote on what's next, and schedule your meetings — all in one place.",
-    status: "active",
-    dateRange: "2026.07 —> present",
-    stack: ["Next.js", "Typescript", "Prisma", "PostgreSQL", "Auth.js"],
-    link: "https://journalclub.vercel.app/",
-    linkLabel: "in progress",
-  },
-  {
-    title: "GT Campus Opportunity Finder",
+    title: "BuzzBoard",
     description:
       "Searchable directory of Georgia Tech VIP teams, research labs, and technical student orgs, with scraper pipelines, LLM-based classification, and a crowdsourced submission + review queue.",
     status: "active",
-    dateRange: "2026.07 —> present",
     stack: ["Postgres", "Playwright", "LLM classification", "full-text search"],
     link: "https://gt-opportunities.vercel.app/",
-    linkLabel: "in progress",
-  },
-  {
-    title: "Standing-Balance Control Policy for Humanoid Robot",
-    description:
-      "Custom reinforcement learning environment for humanoid balance recovery, training a PPO policy on the Berkeley Humanoid robot model.",
-    status: "dev",
-    dateRange: "2026.06 —> present",
-    stack: ["MuJoCo Playground", "Brax", "PPO", "reinforcement learning"],
-    link: "https://github.com/MAKOMIKOLAKO/humanoid_balance",
     linkLabel: "in progress",
   },
   {
@@ -192,7 +182,6 @@ export const projects: ProjectEntry[] = [
     description:
       "Embedded firmware integrating time-of-flight and PPG sensors over I2C, with a real-time signal processing pipeline for heart rate extraction.",
     status: "dev",
-    dateRange: "2026.06 —> present",
     stack: ["C", "ESP-IDF", "FreeRTOS", "I2C", "VL53L0X", "MAX30102"],
     link: "https://github.com/MAKOMIKOLAKO/esp32-sensor-integration",
     linkLabel: "repo",
@@ -202,7 +191,6 @@ export const projects: ProjectEntry[] = [
     description:
       "Full-stack reading tracker web app with keyword search and Gemini-powered metadata extraction, deployed on Vercel.",
     status: "active",
-    dateRange: "2026.03 —> present",
     stack: [
       "Next.js 14",
       "TypeScript",
@@ -219,7 +207,6 @@ export const projects: ProjectEntry[] = [
     description:
       "Voice-first personal context engine — speak and forget. Update named threads of persistent information by voice, no ambient listening, no typing.",
     status: "dev",
-    dateRange: "2026 —> present",
     stack: ["FastAPI", "Supabase", "pgvector", "Deepgram", "Claude API", "Python"],
     link: null,
     linkLabel: "build in progress",
@@ -234,7 +221,6 @@ export const heroLinks = [
 
 export const footerLinks = [
   { label: "email", href: "mailto:maako.fangajei@gmail.com" },
-  { label: "instagram", href: "https://www.instagram.com/makomikolako/"},
   { label: "linkedin", href: "https://www.linkedin.com/in/mfangajei" },
 ];
 

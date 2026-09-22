@@ -45,7 +45,7 @@ function ProjectBody({
       </div>
 
       <div className="flex items-center justify-between gap-4">
-        <StatusLine status={project.status} dateRange={project.dateRange} />
+        <StatusLine status={project.status} />
         {project.link ? (
           <a
             href={project.link}
