@@ -4,7 +4,7 @@ export const bio = {
   photos: [{ src: "/headshot.jpg", caption: "img_003 · headshot.jpg" }],
   stats: [
     { label: "focus", value: "machine intelligence" },
-    { label: "labs", value: "inan lab, epic lab" },
+    { label: "labs", value: "dynamic mobility lab, epic lab, inan lab" },
     { label: "gpa", value: "4.00" },
     { label: "base", value: "atlanta, ga" },
   ],
@@ -30,6 +30,17 @@ export type ExperienceEntry = {
 export const experience: ExperienceEntry[] = [
   {
     logIndex: "log_005",
+    role: "undergraduate research assistant",
+    org: "Dynamic Mobility Lab",
+    logo: "/logos/dm_logo.png",
+    status: "current",
+    dateRange: "2026.09 —> present",
+    bullets: [
+      "multi-objective reinforcement learning for locomotion tasks",
+    ],
+  },
+  {
+    logIndex: "log_006",
     role: "machine learning engineer",
     org: "Georgia Tech Research Institute",
     logo: "/logos/gtri.jpg",
@@ -40,22 +51,19 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    logIndex: "log_006",
+    logIndex: "log_007",
     role: "undergraduate research assistant",
     org: "EPIC Lab",
     logo: "/logos/epic.png",
     status: "current",
     dateRange: "2026.01 —> present",
     bullets: [
-      "Redesigning power system breaker board PCB layout in EasyEDA for a wearable exoskeleton platform.",
-      "Redesigned battery and Raspberry Pi enclosure for the exoskeleton backpack system; fabricated final version using SLA printing.",
-      "Fabricated custom IMU sensor cables (soldering + mechanical cutting) to establish a dedicated data collection kit.",
-      "Assisted with motion capture and biomechanics data collection sessions with external human subjects using a hip-knee exoskeleton platform under IRB-compliant experimental protocols.",
-      "3D printed structural backpack components in resin to improve durability over prior PLA/FDM parts.",
+      "ml for wearable-sensing based energy estimation",
+      "hip-knee exoskeleton development"
     ],
   },
   {
-    logIndex: "log_007",
+    logIndex: "log_008",
     role: "undergraduate research assistant",
     org: "Inan Research Lab",
     logo: "/logos/inan.png",
@@ -63,62 +71,47 @@ export const experience: ExperienceEntry[] = [
     status: "current",
     dateRange: "2025.09 —> present",
     bullets: [
-      "Built and benchmarked a classical ML pipeline (Random Forest, XGBoost, KNN, Logistic Regression, SVM) for SCG beat quality classification; submitted as co-author to ACM Health.",
-      "Designed and implemented a C port of a Kalman-filter based methodology to identify AO and AC events (HIKAF), including a scalar Kalman filter and SCG beat segmentation; submitted as co-author to IEEE Sensors 2026.",
-      "Led PCB redesign initiative for a physiological sensing device targeting stress identification and vagus nerve modulation, integrating new sensing modalities (temperature sensor, secondary PPG).",
-      "Developing a multimodal temporal convolutional network (TCN) for Parkinson's levodopa state detection, using a late-fusion multi-encoder design to combine heterogeneous biosignal modalities.",
-      "Implementing modality-level interpretability methods to identify which biosignal channels drive model predictions.",
+      "c implementation of kalman filter-based pipeline for event identification in scg data",
+      "tcn-based interpretability analysis towards understanding impact of levodopa dosage for different stages of Parkinson's",
+      "ml for signal quality classification of multimodal biosignal data"
     ],
   },
 ];
 
 export const involvements: ExperienceEntry[] = [
   {
-    logIndex: "log_008",
+    logIndex: "log_009",
     role: "founding treasurer",
     org: "WEAR @ GT (Wearable Exoskeletons and Assistive Robotics @ Georgia Tech)",
     logo: "/logos/wearlogo.jpg",
     status: "current",
     dateRange: "2026.01 —> present",
     bullets: [
-      "Manage club finances, budget planning, and funding request review.",
+      "manage club finances, budget planning, and funding request review.",
     ],
   },
   {
-    logIndex: "log_009",
+    logIndex: "log_010",
     role: "treasurer",
     org: "Delta Chi Fraternity",
     logo: "/logos/deltachi.jpg",
     status: "current",
     dateRange: "2026.08 —> present",
     bullets: [
-      "Managed $300K+ annual budget for 100+ member fraternity chapter, tracking dues, expenses, and financial reporting",
-      "Redesigned reimbursement system, increasing processing throughput 75% through new digital forms and backend workflow"
+      "manage $300K+ annual budget for 100+ member fraternity chapter (dues + expenses + reporting)",
     ],
   },
   {
-    logIndex: "log_010",
+    logIndex: "log_011",
     role: "peer instructor",
     org: "The Hive Makerspace",
     logo: "/logos/hive.png",
     status: "current",
     dateRange: "2026.01 —> present",
     bullets: [
-      "Front-desk operations, 3D printing support and troubleshooting.",
+      "front-desk operations, 3d printing support and troubleshooting",
     ],
   },
-  {
-    logIndex: "log_011",
-    role: "learning assistant",
-    org: "Georgia Tech Tutoring and Learning Enrichment",
-    logo: "/logos/gt-tutoring.jpg",
-    status: "current",
-    dateRange: "2026.03 —> present",
-    bullets: [
-      "Facilitate problem-solving and conceptual understanding in STEM courses through office hours and small-group instruction.",
-      "Support course coordination and communication between students and instructional staff.",
-    ],
-  }
 ];
 
 export type EducationEntry = {
@@ -136,12 +129,12 @@ export const education: EducationEntry[] = [
     degree: "B.S. Computer Engineering",
     school: "Georgia Institute of Technology",
     logo: "/logos/gt.png",
-    status: "expected 2028.05",
+    status: "expected 2029.05",
     detailLines: [
       "threads: Robotics & Autonomous Systems, Distributed System & Software Design",
-      "distinctions: Stamps President's Scholars Program · Ron Brown Captain · Faculty Honors (x1)",
+      "distinctions: Stamps President's Scholars Program · Ron Brown Captain · Faculty Honors (x2)",
       "gpa: 4.00",
-      "coursework: Digital System Design (ECE 2020) · Linear Algebra (MATH 1554) · Principles of Physics II (PHYS 2212) · Intro to Object-Oriented Programming (CS 1331) · Data Structures & Algorithms (CS 1332)",
+      "coursework: Intro to Robotics & Perception (CS 3630) · Intro to Signal Processing (ECE 2026) · Programming for Hardware/Software Systems (ECE 2035) · Digital System Design (ECE 2020) · Data Structures & Algorithms (CS 1332)",
     ],
   },
   {
@@ -155,6 +148,57 @@ export const education: EducationEntry[] = [
       "IB Bilingual Diploma — English, French",
       "final grade: 43/45",
     ],
+  },
+];
+
+export type PublicationStatus = "accepted" | "in preparation";
+
+export type Publication = {
+  title: string;
+  authors: string[];
+  etAl?: boolean;
+  venue?: string;
+  year?: number;
+  status: PublicationStatus;
+  link?: string;
+};
+
+// rendered in bold wherever it appears in an author list
+export const selfAuthor = "M. Fangajei";
+
+// listed in display order; groups and [A.1]-style labels are derived from status
+export const publicationGroups: PublicationStatus[] = ["accepted", "in preparation"];
+
+export const publications: Publication[] = [
+  {
+    title:
+      "Implementation and validation of a real-time algorithm for wearable seismocardiogram fiducial point detection",
+    authors: [
+      "F. Rahman",
+      "M. Fangajei",
+      "A. Nawar",
+      "O. Selim Kilic",
+      "C. Okan Yaldiz",
+      "J. Hahn",
+      "O. T. Inan",
+    ],
+    venue: "IEEE Sensors",
+    year: 2026,
+    status: "accepted",
+  },
+  {
+    title:
+      "Cross-species transfer learning for seismocardiography signal quality assessment via few-shot adaptation from pre-trained porcine models",
+    authors: [
+      "M. Cho",
+      "O. Kilic",
+      "C. Yaldiz",
+      "V. Abbaraju",
+      "A. Nawar",
+      "M. Fangajei",
+    ],
+    etAl: true,
+    status: "in preparation",
   },
 ];
 
@@ -178,15 +222,6 @@ export const projects: ProjectEntry[] = [
     linkLabel: "in progress",
   },
   {
-    title: "ESP32 Multi-Sensor Real-Time Data Logger",
-    description:
-      "Embedded firmware integrating time-of-flight and PPG sensors over I2C, with a real-time signal processing pipeline for heart rate extraction.",
-    status: "dev",
-    stack: ["C", "ESP-IDF", "FreeRTOS", "I2C", "VL53L0X", "MAX30102"],
-    link: "https://github.com/MAKOMIKOLAKO/esp32-sensor-integration",
-    linkLabel: "repo",
-  },
-  {
     title: "Corpus",
     description:
       "Full-stack reading tracker web app with keyword search and Gemini-powered metadata extraction, deployed on Vercel.",
@@ -201,15 +236,6 @@ export const projects: ProjectEntry[] = [
     ],
     link: "https://usecorpus.app",
     linkLabel: "in progress",
-  },
-  {
-    title: "drift.",
-    description:
-      "Voice-first personal context engine — speak and forget. Update named threads of persistent information by voice, no ambient listening, no typing.",
-    status: "dev",
-    stack: ["FastAPI", "Supabase", "pgvector", "Deepgram", "Claude API", "Python"],
-    link: null,
-    linkLabel: "build in progress",
   },
 ];
 
@@ -228,6 +254,7 @@ export const sectionIds = [
   "hero",
   "about",
   "experience",
+  "publications",
   "involvements",
   "education",
   "projects",

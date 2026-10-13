@@ -3,6 +3,7 @@ import About from "@/components/About";
 import Experience from "@/components/Experience";
 import { involvements } from "@/lib/content";
 import Education from "@/components/Education";
+import Publications from "@/components/Publications";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import SectionCounter from "@/components/SectionCounter";
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <About />
         <Experience />
+        <Publications />
         <Experience id="involvements" entries={involvements} />
         <Education />
         <Projects />
