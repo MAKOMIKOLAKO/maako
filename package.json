@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:arm-model": "node scripts/build-so101.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "^9.6.1",
@@ -23,6 +24,7 @@
     "@types/three": "^0.185.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "meshoptimizer": "^1.3.0",
     "playwright": "^1.61.1",
     "tailwindcss": "^4",
     "typescript": "^5"
